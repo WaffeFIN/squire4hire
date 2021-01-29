@@ -731,9 +731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b1b35da274d7ab5b72b9390b215520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 5
-  maxSpeed: 20
-  target: {x: 100, y: 300, z: 0}
+  acceleration: 12
+  maxSpeed: 40
+  target: {x: 400, y: 400, z: 0}
 --- !u!114 &1625156176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,8 +827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b1b35da274d7ab5b72b9390b215520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 22
-  maxSpeed: 220
+  acceleration: 0
+  maxSpeed: 0
   target: {x: 0, y: 0, z: 0}
 --- !u!114 &1938423872
 MonoBehaviour:
@@ -842,6 +842,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4868888dd67021ff8a8f80e6e880b194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dodging: -100
+  dodgeSpeedMultiplier: 2.7
+  dodgeTime: 0.4
+  dodgeRecoverTime: 0.2
+  diveRecoverTime: 0.8
+  maxSpeed: 220
+  acceleration: 22
+  encumbered: 0
 --- !u!50 &1938423873
 Rigidbody2D:
   serializedVersion: 4

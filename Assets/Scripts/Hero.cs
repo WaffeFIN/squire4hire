@@ -14,7 +14,5 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var currentPosition = gameObject.transform.position;
-        gameObject.transform.position = new Vector3(currentPosition.x + 1, currentPosition.y);
     }
 }
