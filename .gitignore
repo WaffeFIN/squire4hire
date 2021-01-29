@@ -1,0 +1,10 @@
+/.vscode/
+/packages-microsoft-prod.deb
+
+/Assembly-CSharp.csproj
+/Library/
+/Temp/
+/.vs/
+
+/obj/
+*.cache
