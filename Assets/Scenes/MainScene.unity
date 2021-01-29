@@ -363,9 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4962d7bba3bd24fb5d083e8e6d2432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroTransform: {fileID: 1625156174}
-  SmoothFactor: 0.5
-  CameraDistance: 30
+  heroPosition: {fileID: 0}
 --- !u!1 &1263556810
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +624,7 @@ GameObject:
   - component: {fileID: 1625156173}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,7 +672,7 @@ GameObject:
   - component: {fileID: 1938423871}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
