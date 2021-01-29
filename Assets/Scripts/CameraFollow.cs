@@ -13,7 +13,15 @@ public class CameraFollow : MonoBehaviour
         GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height / 2) / CameraDistance);
     }
 
+	public Camera camera;
+
     void LateUpdate() {
-        transform.position = Vector3.Slerp(transform.position, HeroTransform.position, SmoothFactor);
+        if (Input.GetKey("space"))
+        {
+            // choose the margin randomly
+            float margin = Random.Range(0.0f, 0.3f);
+            // setup the rectangle
+            camera.rect = new Rect(margin, 0.0f, 1.0f - margin * 2.0f, 1.0f);
+        }
     }
 }

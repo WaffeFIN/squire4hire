@@ -1,32 +1,27 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class TargetMovement : MonoBehaviour
 {
+	public float acceleration;
+	public float maxSpeed;
+	public Vector3 target;
 
     // Update is called once per frame
     void Update()
     {
 		var rigidBody = GetComponent<Rigidbody2D>();
 		var vel = rigidBody.velocity;
-		var dx = 0;
-		var dy = 0;
-		var acc = 22;
-        if (Input.GetKey("up")) {
-			dy += acc;
-		}
-        if (Input.GetKey("down")) {
-			dy -= acc;
-		}
-        if (Input.GetKey("right")) {
-			dx += acc;
-		}
-        if (Input.GetKey("left")) {
-			dx -= acc;
-		}
+		var dx = target.x - transform.position.x;
+		var dy = target.y - transform.position.y;
+
+		var acc = dx < float.Epsilon && dy < float.Epsilon ? 0.0f : acceleration / Mathf.Sqrt(dx * dx + dy * dy);
+		dx *= acc;
+		dy *= acc;
+
 		rigidBody.velocity = new Vector2(vel.x + dx, vel.y + dy);
-		var maxSpeed = 220.0f;
+		
 		if (rigidBody.velocity.magnitude > maxSpeed) {
 			rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
 		}
