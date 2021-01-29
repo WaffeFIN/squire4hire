@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class Hero : MonoBehaviour
 {
-    public Image image;
-
     // Start is called before the first frame update
     void Start()
     {
         this.gameObject.transform.position = new Vector3(200, 200);
-        image.transform.position = new Vector3(200, 200);
     }
 
     // Update is called once per frame
@@ -19,6 +16,5 @@ public class Hero : MonoBehaviour
     {
         var currentPosition = gameObject.transform.position;
         gameObject.transform.position = new Vector3(currentPosition.x + 1, currentPosition.y);
-        image.transform.position = new Vector3(currentPosition.x + 1, currentPosition.y);
     }
 }

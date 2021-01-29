@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public Image image;
-
     // Start is called before the first frame update
     void Start()
     {
