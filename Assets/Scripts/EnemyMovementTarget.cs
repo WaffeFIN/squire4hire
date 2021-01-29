@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovementTarget : MonoBehaviour
 {
-	enum TargetType {
+	public enum TargetType {
 		Hero, Both
 	}
 
-	Vector3 target;
-	float maxSpeed;
-	TargetType targets;
+	public float maxSpeed;
+	public TargetType targets;
+	public float aggroRange;
 
     // Update is called once per frame
     void Update()
@@ -18,11 +18,10 @@ public class EnemyMovement : MonoBehaviour
         GameObject[] heroes = GameObject.FindGameObjectsWithTag("Hero");
         //GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-		var heroRange = 600;
-
 		if (heroes.Length == 1) {
 			var newTarget = heroes[0].transform.position;
-			if (Vector2.Distance(transform.position, newTarget) < heroRange) {
+			var distance = Vector2.Distance(transform.position, newTarget);
+			if (distance < aggroRange) {
 				GetComponent<TargetMovement>().target = newTarget;
 			}
 		}

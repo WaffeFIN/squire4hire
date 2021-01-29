@@ -16,7 +16,7 @@ public class TargetMovement : MonoBehaviour
 		var dx = target.x - transform.position.x;
 		var dy = target.y - transform.position.y;
 
-		var acc = dx < float.Epsilon && dy < float.Epsilon ? 0.0f : acceleration / Mathf.Sqrt(dx * dx + dy * dy);
+		var acc = Mathf.Abs(dx) < float.Epsilon && Mathf.Abs(dy) < float.Epsilon ? 0.0f : acceleration / Mathf.Sqrt(dx * dx + dy * dy);
 		dx *= acc;
 		dy *= acc;
 
