@@ -9,8 +9,6 @@ public class Hero : MonoBehaviour
 
     public GameObject imageObject;
 
-    public bool swinging = true;
-
     public enum HeroState {
 		Bashing,
 		ComplainingAboutDirt
@@ -83,6 +81,9 @@ public class Hero : MonoBehaviour
 			var knockbackStrength = 250;
 			painZoneComponent.knockback = (Vector2)(Quaternion.Euler(0, 0, rotation) * Vector2.right) * knockbackStrength;
 			swingTowards = null;
+
+            var animator = imageObject.GetComponent<Animator>();
+            animator.SetBool("swinging", false);
 		}
 
     }
@@ -115,7 +116,7 @@ public class Hero : MonoBehaviour
 		} else {
 			if (swingTimer < 0) {
                 var animator = imageObject.GetComponent<Animator>();
-                animator.SetBool("swinging", swinging);
+                animator.SetBool("swinging", true);
 
 				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 5.0f));
                 FindObjectOfType<AudioManager>().Play("sword_swoosh_" + randomIndex);
