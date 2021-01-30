@@ -19,6 +19,9 @@ public class Inventory : MonoBehaviour
 
 	public void AddItem(GameObject obj, int weigth) {
         if (Weight() + weigth <= maxWeight) {
+			if (gameObject.tag == "Player") {
+				FindObjectOfType<AudioManager>().Play("item_pickup");
+			}
 			itemsCarried.Add(obj);
 			obj.SetActive(false);
 			var imageManager = obj.GetComponent<ImageManager>();
@@ -70,6 +73,7 @@ public class Inventory : MonoBehaviour
 	}
 
 	public void Pointsify(List<GameObject> targetList) {
+		FindObjectOfType<AudioManager>().Play("coingain");
 		if (itemsCarried.Count >= 3)
 			ScoreSystem.tripleRetrievals++;
 		

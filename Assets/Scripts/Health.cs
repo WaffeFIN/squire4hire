@@ -32,6 +32,14 @@ public class Health : MonoBehaviour
 		} else {
         	currentHealth--;
 		}
+		if (gameObject.tag == "Player") {
+			var randomIndex = ((int) Mathf.Floor(Random.Range(0.0f, 2.0f))) + 1;
+			FindObjectOfType<AudioManager>().Play("va_squire_yelp_" + randomIndex);
+		}
+		if (gameObject.tag == "Hero") {
+			var randomIndex = ((int) Mathf.Floor(Random.Range(0.0f, 2.0f))) + 1;
+			FindObjectOfType<AudioManager>().Play("va_hero_grunt_" + randomIndex);
+		}
     }
 
     public void RecoverHealth(int amount) {

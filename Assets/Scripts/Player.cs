@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 		var itemComponent = col.gameObject.GetComponent<Item>();
         if (itemComponent != null && itemComponent.pickupTimer < 0)
         {
+			FindObjectOfType<AudioManager>().Play("item_pickup");
 			GetComponent<Inventory>().AddItem(col.gameObject, itemComponent.ItemWeight);
         }
     }
