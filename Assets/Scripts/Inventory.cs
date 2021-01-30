@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour
 	}
 
 	public void Pointsify(List<GameObject> targetList) {
-		FindObjectOfType<AudioManager>().Play("coingain");
+		FindObjectOfType<AudioManager>().Play("get_points");
 		if (itemsCarried.Count >= 3)
 			ScoreSystem.tripleRetrievals++;
 		
