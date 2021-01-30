@@ -25,7 +25,12 @@ public class Hero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.transform.position = new Vector3(200, 200);
+        transform.position = new Vector3(200, 200);
+		var inventory = GetComponent<Inventory>();
+		for (int i = 0; i < 15; i++) {
+			var arrow = spawner.SpawnItem("arrow-1", transform);
+			inventory.AddItem(arrow);
+		}
     }
 
     // Update is called once per frame
@@ -37,7 +42,7 @@ public class Hero : MonoBehaviour
 			armorPolish -= Time.deltaTime;
 		}
 		if (Time.time > nextItemSpawn) {
-			spawner.SpawnItem("arrow-1", transform);
+			GetComponent<Inventory>().LoseRandomItem();
 			var spawnTime = Random.Range(1.2f, 3.0f);
 			nextItemSpawn += spawnTime * spawnTime;
 		}
@@ -53,11 +58,22 @@ public class Hero : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.tag == "Player" && state == HeroState.ComplainingAboutDirt) {
-			armorPolish += Time.deltaTime * polishingSpeedCoefficient;
-			if (armorPolish > maxArmorPolish) {
-				armorPolish = maxArmorPolish;
-				state = HeroState.Bashing;
+		if (other.tag == "Player") {
+			switch (state) {
+				case HeroState.ComplainingAboutDirt:
+					armorPolish += Time.deltaTime * polishingSpeedCoefficient;
+					if (armorPolish > maxArmorPolish) {
+						armorPolish = maxArmorPolish;
+						state = HeroState.Bashing;
+					}
+					break;
+				case HeroState.Bashing:
+					var playerInventory = other.gameObject.GetComponent<Inventory>();
+					if (playerInventory.itemsCarried.Count > 0) {
+						var heroInventory = GetComponent<Inventory>();
+						playerInventory.Pointsify(heroInventory.itemsCarried);
+					}
+					break;
 			}
 		}
 	}

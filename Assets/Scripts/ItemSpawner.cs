@@ -14,14 +14,15 @@ public class ItemSpawner : MonoBehaviour
     }
 
     public GameObject SpawnItem(string itemId, Transform entityTransform) {
+		GameObject itemObj;
         if (PrefabDic.TryGetValue(itemId, out GameObject obj)) {
-			var itemObj = Instantiate(obj, entityTransform.position, Quaternion.identity);
+			itemObj = Instantiate(obj, entityTransform.position, Quaternion.identity);
             var itemSprite = itemObj.GetComponent<Item>().SpriteRef;
             itemObj.GetComponent<ImageManager>().image = GenerateImageForItem(itemId, itemSprite);
 		} else {
 			throw new NotImplementedException($"Error trying to instantiate {itemId}");
 		}
-        return obj;
+        return itemObj;
     }
 
     private Image GenerateImageForItem(string itemId, Sprite spriteRef) {
