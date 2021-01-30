@@ -64,9 +64,9 @@ public class Hero : MonoBehaviour
 			complaintTimer -= Time.deltaTime;
 			if (complaintTimer < 0) {
 				complaintTimer += complaintInterval;
-				//TODO Complain
-				print("Complaint!");
-                FindObjectOfType<AudioManager>().Play("va_polish_armor_command_1");
+
+				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 2.0f));
+                FindObjectOfType<AudioManager>().Play("va_polish_armor_command_" + randomIndex);
             }
 		}
 
