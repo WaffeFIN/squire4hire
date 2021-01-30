@@ -8,6 +8,8 @@ public class Item : MonoBehaviour
     public int ItemWeight = 1;
 
 	public float pickupTimer = 0.5f;
+
+	private float decay = 30.0f;
     
 
     // Start is called before the first frame update
@@ -28,5 +30,8 @@ public class Item : MonoBehaviour
                 itemBody.velocity = new Vector2();
             }
         }
+
+		decay -= Time.deltaTime;
+		if (decay < 0.0f) Destroy(gameObject);
     }
 }
