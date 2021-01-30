@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     //temporary spawnTimer
     private float nextSpawn = 1;
 
+    //public bool gnoming = true;
+
     private Dictionary<string, GameObject> PrefabDic;
     void Awake() {
     	PrefabDic = MapEnemyLegendToPrefabs(ENEMY_LEGEND);
@@ -32,26 +34,29 @@ public class EnemySpawner : MonoBehaviour
         if (PrefabDic.TryGetValue(enemyId, out GameObject obj)) {
 			var itemObj = Instantiate(obj, spawnPosition, Quaternion.identity);
             var itemSprite = itemObj.GetComponent<Enemy>().SpriteRef;
-            itemObj.GetComponent<ImageManager>().image = GenerateImageForEnemy(enemyId, itemSprite);
+            var animator = itemObj.GetComponent<Animator>();
+            itemObj.GetComponent<ImageManager>().image = GenerateImageForEnemy(enemyId, itemSprite, animator);
 		} else {
 			throw new NotImplementedException($"Error trying to instantiate {enemyId}");
 		}
         return obj;
     }
 
-    private Image GenerateImageForEnemy(string enemyId, Sprite spriteRef) {
+    private Image GenerateImageForEnemy(string enemyId, Sprite spriteRef, Animator animator) {
         GameObject imgObject = new GameObject(enemyId);
 
         RectTransform trans = imgObject.AddComponent<RectTransform>();
         trans.anchoredPosition = new Vector2(0.5f, 0.5f);
         trans.localPosition = new Vector3(0, 0, 0);
         trans.position = new Vector3(0, 0, 0);
-        trans.sizeDelta = new Vector2(64, 64);
+        trans.sizeDelta = new Vector2(14, 24);
 
         Image image = imgObject.AddComponent<Image>();
         image.sprite = spriteRef;
-        image.color = new Color(1f, 0.1f, 0.1f);
+       //image.color = new Color(1f, 0.1f, 0.1f);
         imgObject.transform.SetParent(enemyUI.transform);
+        Animator anim = imgObject.AddComponent<Animator>();
+        anim.runtimeAnimatorController = animator.runtimeAnimatorController;
         return image;
     }
     
