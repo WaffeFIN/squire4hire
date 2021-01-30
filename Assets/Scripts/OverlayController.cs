@@ -2,32 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour
+public class OverlayController : MonoBehaviour
 {
     public Camera currentCamera;
-    public Inventory playerInventory;
+    public GameObject player;
 
     // Overlay visuals
     public GameObject overlay;
+    public GameObject darkBackdrop;
     public GameObject pauseMenu;
+    public GameObject gameOverMenu;
     public GameObject inventoryContent;
 
     private bool isGameOngoing = true;
 	private int previousCount = -1;
+    private bool isGameOver = false;
 
-    // Update is called once per frame
     void Update()
     {
         var currentCameraPosition = currentCamera.transform.position;
         overlay.transform.position = new Vector2(currentCameraPosition.x, currentCameraPosition.y);
 
+        if (!isGameOngoing && Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(0);
+        }
+
+        if (isGameOver) { return; }
+
         if (Input.GetKeyDown(KeyCode.P)) {
             isGameOngoing = !isGameOngoing;
             Time.timeScale = isGameOngoing ? 1 : 0;
             pauseMenu.SetActive(!isGameOngoing);
+            darkBackdrop.SetActive(!isGameOngoing);
         }
 
+        if (player.GetComponent<Health>().IsDead()) {
+            isGameOver = true;
+            isGameOngoing = false;
+            Time.timeScale = 0;
+            gameOverMenu.SetActive(true);
+            darkBackdrop.SetActive(true);
+        }
+
+        var playerInventory = player.GetComponent<Inventory>();
         if (previousCount != playerInventory.itemsCarried.Count) {
 			previousCount = playerInventory.itemsCarried.Count;
             var content = "";

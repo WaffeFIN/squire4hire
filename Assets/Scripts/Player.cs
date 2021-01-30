@@ -12,12 +12,12 @@ public class Player : MonoBehaviour
 		var itemComponent = col.gameObject.GetComponent<Item>();
         if (itemComponent != null && itemComponent.pickupTimer < 0)
         {
-			GetComponent<Inventory>().AddItem(col.gameObject, itemComponent.ItemWeight);
+			    GetComponent<Inventory>().AddItem(col.gameObject, itemComponent.ItemWeight);
         }
     }
 
     void Update()
     {
-		ScoreSystem.distanceMoved += GetComponent<Rigidbody2D>().velocity.magnitude;
+		  ScoreSystem.distanceMoved += GetComponent<Rigidbody2D>().velocity.magnitude;
     }
 }
