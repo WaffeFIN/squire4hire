@@ -13,6 +13,7 @@ public class PlayerMovementTarget : MonoBehaviour
 	public float acceleration;
 
 	public bool encumbered = false; // when carrying things
+    public bool moving = false;
 
 
     // Update is called once per frame
@@ -37,6 +38,24 @@ public class PlayerMovementTarget : MonoBehaviour
         {
 			dx -= maxSpeed;
 		}
+
+        if (dx > 0)
+        {
+            Vector2 theScale = transform.localScale;
+            theScale.x = -1.0f;
+            transform.localScale = new Vector2(-1.0f, 1.0f);
+        }
+
+        if (dx < 0)
+        {
+            //transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+
+
+        moving = dx != 0.0f || dy != 0.0f;
+        var image = gameObject.GetComponent<ImageManager>().image;
+        var animator = image.gameObject.GetComponent<Animator>();
+        animator.SetBool("moving", moving);
 
         if ((dx != 0.0f || dy != 0.0f) && Input.GetKeyDown("space") && dodging < -diveRecoverTime) {
 			dodging = dodgeTime;
