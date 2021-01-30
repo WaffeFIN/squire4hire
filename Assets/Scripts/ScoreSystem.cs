@@ -19,8 +19,8 @@ public class ScoreSystem : MonoBehaviour
 			weaponsRetrieved * 100 +
 			armorPartsRetrieved * 75 +
 			tripleRetrievals * 100 + 
-			hitsDodged * 5 -
-			itemsLost * 25 +
+			hitsDodged * 25 -
+			itemsLost * 50 +
 			armorPolishes * 250;
 	}
 }

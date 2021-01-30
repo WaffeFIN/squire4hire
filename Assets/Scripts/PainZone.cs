@@ -16,6 +16,12 @@ public class PainZone : MonoBehaviour
 	
 	void OnTriggerStay2D(Collider2D other) {
 		if (other.gameObject != creator && (targetsOnly == null || targetsOnly == "" || targetsOnly == other.tag)) {
+			if (other.tag == "Player") {
+				if (other.GetComponent<PlayerMovementTarget>().dodging >= 0) {
+					ScoreSystem.hitsDodged++;
+					return;
+				}
+			}
 			var health = other.GetComponent<Health>();
 			if (health != null) {
 				health.TakeDamage();
@@ -28,6 +34,6 @@ public class PainZone : MonoBehaviour
 	}
 
 	void LateUpdate() {
-		//Destroy(gameObject);
+		Destroy(gameObject);
 	}
 }
