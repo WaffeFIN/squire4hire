@@ -7,7 +7,11 @@ public class Hero : MonoBehaviour
 {
     public ItemSpawner spawner;
 
-	public enum HeroState {
+    public GameObject imageObject;
+
+    public bool swinging = true;
+
+    public enum HeroState {
 		Bashing,
 		ComplainingAboutDirt
 	}
@@ -40,7 +44,8 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		swingTimer -= Time.deltaTime;
+
+        swingTimer -= Time.deltaTime;
 
 		if (armorPolish <= 0) {
 			state = HeroState.ComplainingAboutDirt;
@@ -90,7 +95,11 @@ public class Hero : MonoBehaviour
 			}
 		} else {
 			if (swingTimer < 0) {
-				swingTimer = swingInterval;
+
+               var animator = imageObject.GetComponent<Animator>();
+               animator.SetBool("swinging", swinging);
+
+                swingTimer = swingInterval;
 				var rotation = GetRotation(transform.position, other.transform.position);
 				var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
 				painZone.transform.Rotate(0, 0, rotation);

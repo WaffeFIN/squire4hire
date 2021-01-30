@@ -6,6 +6,7 @@ public class HeroController : MonoBehaviour
 {
     public TargetMovement heroMovement;
     public WaypointHandler waypointHandler;
+    public bool moving = true;
 
     public Vector2 currentWaypointTarget;
     private int currentWayPointIndex;

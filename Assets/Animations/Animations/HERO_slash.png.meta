@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: f566b0f2f0033314cbc454b0ed36c10e
+guid: e00d747bb3ea9954baaab4201c893b3d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6731034274881857951
-    second: MC_walk_0
+      213: 7195362608462289695
+    second: HERO_slash_0
   - first:
-      213: -3545826793338170577
-    second: MC_walk_1
+      213: -5675705225122627433
+    second: HERO_slash_1
   - first:
-      213: 5460157233070900270
-    second: MC_walk_2
+      213: 2898563592402810757
+    second: HERO_slash_2
   - first:
-      213: -329747120390523105
-    second: MC_walk_3
+      213: -2536096737891148756
+    second: HERO_slash_3
+  - first:
+      213: 1511716801080623757
+    second: HERO_slash_4
+  - first:
+      213: 604930255674661259
+    second: HERO_slash_5
+  - first:
+      213: 8607033433342593327
+    second: HERO_slash_6
+  - first:
+      213: 7168980365389463144
+    second: HERO_slash_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -57,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -87,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC_walk_0
+      name: HERO_slash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80919105564cfb54e90b74bb2e7d38fe
-      internalID: -6731034274881857951
+      spriteID: 3e7dccc5c14a3454c979192f0e2b2071
+      internalID: 7195362608462289695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_1
+      name: HERO_slash_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 64
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf26563d3e56fd242ae9b82fba2be2de
-      internalID: -3545826793338170577
+      spriteID: 853043a0f2039fb438efd9837b27a564
+      internalID: -5675705225122627433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_2
+      name: HERO_slash_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 128
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d54c8b3ee93924448e6cbb412f4d98c
-      internalID: 5460157233070900270
+      spriteID: e418f6973852ebc4093ec4d8ac4e4ecd
+      internalID: 2898563592402810757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_3
+      name: HERO_slash_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 192
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +199,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93e45a5da4068014197782dd63ae0dec
-      internalID: -329747120390523105
+      spriteID: b2e6d1fa2d54531469f36b39ff1aaff1
+      internalID: -2536096737891148756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HERO_slash_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850a6893211db054fbc47d1f9b687690
+      internalID: 1511716801080623757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HERO_slash_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dd8cc06527567449aad920a82bcbf82
+      internalID: 604930255674661259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HERO_slash_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abfaffd37279ae3489c6094d25094d21
+      internalID: 8607033433342593327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HERO_slash_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a98ca0863d08ce48bff0e9b1fdf9070
+      internalID: 7168980365389463144
       vertices: []
       indices: 
       edges: []

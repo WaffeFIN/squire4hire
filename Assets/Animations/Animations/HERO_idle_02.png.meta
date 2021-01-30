@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: f566b0f2f0033314cbc454b0ed36c10e
+guid: 0dae5fc12f150014b9df7878a70fc379
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6731034274881857951
-    second: MC_walk_0
+      213: 7951477251069476970
+    second: HERO_idle_02_0
   - first:
-      213: -3545826793338170577
-    second: MC_walk_1
+      213: -7686499457899923575
+    second: HERO_idle_02_1
   - first:
-      213: 5460157233070900270
-    second: MC_walk_2
+      213: 5563939626756198205
+    second: HERO_idle_02_2
   - first:
-      213: -329747120390523105
-    second: MC_walk_3
+      213: 221604399620573235
+    second: HERO_idle_02_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC_walk_0
+      name: HERO_idle_02_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80919105564cfb54e90b74bb2e7d38fe
-      internalID: -6731034274881857951
+      spriteID: 0d6edbaa3be55fc42b53055dc15d789d
+      internalID: 7951477251069476970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_1
+      name: HERO_idle_02_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 64
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf26563d3e56fd242ae9b82fba2be2de
-      internalID: -3545826793338170577
+      spriteID: 93bbebc5e928fd84a8f7c4de4f1bd28c
+      internalID: -7686499457899923575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_2
+      name: HERO_idle_02_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 128
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d54c8b3ee93924448e6cbb412f4d98c
-      internalID: 5460157233070900270
+      spriteID: 436901bfadf6244479429ebb479d53db
+      internalID: 5563939626756198205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_3
+      name: HERO_idle_02_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 192
         y: 0
-        width: 17
-        height: 21
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93e45a5da4068014197782dd63ae0dec
-      internalID: -329747120390523105
+      spriteID: c83c480805189c7489b3391e9bce0a7f
+      internalID: 221604399620573235
       vertices: []
       indices: 
       edges: []

@@ -48,11 +48,6 @@ public class PlayerMovementTarget : MonoBehaviour
             imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
 
-        if (dx < 0)
-        {
-            //transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }
-
 
         moving = dx != 0.0f || dy != 0.0f;
 		

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: f566b0f2f0033314cbc454b0ed36c10e
+guid: 8b5506783c8314e4e9db2a47ea3d414f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6731034274881857951
-    second: MC_walk_0
+      213: 4060481999497583219
+    second: HERO_walk_0
   - first:
-      213: -3545826793338170577
-    second: MC_walk_1
+      213: -3511565066151099760
+    second: HERO_walk_1
   - first:
-      213: 5460157233070900270
-    second: MC_walk_2
+      213: 2621563233073384245
+    second: HERO_walk_2
   - first:
-      213: -329747120390523105
-    second: MC_walk_3
+      213: 4774188388913232322
+    second: HERO_walk_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC_walk_0
+      name: HERO_walk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
-        height: 21
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80919105564cfb54e90b74bb2e7d38fe
-      internalID: -6731034274881857951
+      spriteID: edd8dfe0b0ff5734688c8d33316aac95
+      internalID: 4060481999497583219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_1
+      name: HERO_walk_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 32
         y: 0
-        width: 17
-        height: 21
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf26563d3e56fd242ae9b82fba2be2de
-      internalID: -3545826793338170577
+      spriteID: 3e6f9f78d6f6bdb4c8e7f5521234b61b
+      internalID: -3511565066151099760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_2
+      name: HERO_walk_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 64
         y: 0
-        width: 17
-        height: 21
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d54c8b3ee93924448e6cbb412f4d98c
-      internalID: 5460157233070900270
+      spriteID: 5521b6765a9d4eb44865281b79684b81
+      internalID: 2621563233073384245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_walk_3
+      name: HERO_walk_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 96
         y: 0
-        width: 17
-        height: 21
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93e45a5da4068014197782dd63ae0dec
-      internalID: -329747120390523105
+      spriteID: 86d322ae446a83c4984330fe5a94aba8
+      internalID: 4774188388913232322
       vertices: []
       indices: 
       edges: []
