@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public Sprite SpriteRef;
+
     // Start is called before the first frame update
     void Start()
     {
