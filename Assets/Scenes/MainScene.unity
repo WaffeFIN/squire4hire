@@ -1614,7 +1614,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4614f24cd1ee57248963cb411b9bd32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: item_pickup
+    clip: {fileID: 8300000, guid: 58baf61cda8b288429a6b5298313cd04, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: footsteps
+    clip: {fileID: 8300000, guid: 5598672a7e8260e488535b2d21ee80da, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: armor_polish
+    clip: {fileID: 8300000, guid: 3c22bf96592717d4e9b9177b97e65f63, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: get_points
+    clip: {fileID: 8300000, guid: ca1610f59c1522248be3ff9e98c93340, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: dash
+    clip: {fileID: 8300000, guid: d087282ea62e3f34d979d6fc7b302f1e, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: glass_clink
+    clip: {fileID: 8300000, guid: 804676620266cd648a602c314339eeb0, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_swoosh_1
+    clip: {fileID: 8300000, guid: 805169256f163a942b0be44ec86d9a36, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_swoosh_2
+    clip: {fileID: 8300000, guid: 7653eeffb6174d3438a1ef19fafae3d0, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_swoosh_3
+    clip: {fileID: 8300000, guid: 36c393c66c337e14daa6b1afc262bb01, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_swoosh_4
+    clip: {fileID: 8300000, guid: a38cd03170fad0a4e9378589b486d140, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_swoosh_5
+    clip: {fileID: 8300000, guid: 7ad593df0a9491d449621dbc30bc0b7a, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_drop_1
+    clip: {fileID: 8300000, guid: 759ad8b122a00e74b8c1570d22e44bf2, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: sword_drop_2
+    clip: {fileID: 8300000, guid: c08df0a9dfa94984ca69eeaa0be7551b, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: music
+    clip: {fileID: 8300000, guid: 3f8f5aa4750f1a34fadf7cba91aadd83, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 1
+  - name: va_fail
+    clip: {fileID: 8300000, guid: 4643f4e10db4ae745a529bdb07ed6263, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_fetch_item_command
+    clip: {fileID: 8300000, guid: f3acd662538b3444db1311de6a374f44, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_hero_grunt_1
+    clip: {fileID: 8300000, guid: 05cb478620fddca4982b27a6e7b6fb15, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_hero_grunt_2
+    clip: {fileID: 8300000, guid: d01208d7a6458cb4496f16f375c5b166, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_polish_armor_command_1
+    clip: {fileID: 8300000, guid: 08961690722779244bd2ae2ab17881b6, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_polish_armor_command_2
+    clip: {fileID: 8300000, guid: 3c6f2ead1bf5a2e418004a08133099e1, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_squire_death_1
+    clip: {fileID: 8300000, guid: 5973258df6bb1eb4aab61d799013f474, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_squire_death_2
+    clip: {fileID: 8300000, guid: 612b4caa4de83ec4384935c391f5af6d, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_squire_moan
+    clip: {fileID: 8300000, guid: 2ba61ab86104fe14bbbad127e3ed3476, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_squire_yelp_1
+    clip: {fileID: 8300000, guid: e6da11c996949614497abf29d14eef3d, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - name: va_squire_yelp_2
+    clip: {fileID: 8300000, guid: fe34b4c6483c68b44b858c4c9b496b7c, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
 --- !u!4 &1970282666
 Transform:
   m_ObjectHideFlags: 0
