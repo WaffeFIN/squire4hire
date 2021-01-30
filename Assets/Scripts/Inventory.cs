@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
 			imageManager.image.enabled = true;
 		}
 		lostItem.transform.position = gameObject.transform.position;
-		lostItem.GetComponent<Rigidbody2D>().velocity = 600 * Random.insideUnitCircle.normalized;
+		lostItem.GetComponent<Rigidbody2D>().velocity = Random.Range(320.0f, 520.0f) * Random.insideUnitCircle.normalized;
 	}
 
 	public bool IsFull() {
