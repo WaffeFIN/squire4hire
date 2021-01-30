@@ -45,7 +45,6 @@ public class GameController : MonoBehaviour
             }
            
             inventoryContent.GetComponent<Text>().text = content;
-            
             inventoryContent.GetComponent<Text>().color = playerInventory.IsFull() ? new Color(1f, 0.1f, 0.1f) : new Color(1f, 1f, 1f);
         }
     }
