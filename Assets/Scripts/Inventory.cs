@@ -60,6 +60,10 @@ public class Inventory : MonoBehaviour
 		lostItem.transform.position = gameObject.transform.position;
 	}
 
+	public bool IsFull() {
+		return Weight() >= maxWeight;
+	}
+
 	public void Pointsify(List<GameObject> targetList) {
 		if (itemsCarried.Count >= 3)
 			ScoreSystem.tripleRetrievals++;
