@@ -1717,9 +1717,9 @@ MonoBehaviour:
   painZonePrefab: {fileID: 6032147356893764571, guid: 13a6d686b0f76163496c757ecd142081,
     type: 3}
   maxArmorPolish: 90
-  armorPolish: 1
-  polishingSpeedCoefficient: 10
-  complaintInterval: 5.2
+  armorPolish: 50
+  polishingSpeedCoefficient: 30
+  complaintInterval: 15.2
   swingInterval: 1
 --- !u!4 &1625156174
 Transform:
