@@ -41,6 +41,10 @@ public class Inventory : MonoBehaviour
 	}
 
 	public void LoseRandomItem() {
+		LoseRandomItem(0.5f);
+	}
+
+	public void LoseRandomItem(float pickupTimer) {
 		if (itemsCarried.Count == 0) return;
 		int lossIndex = (int) Mathf.Floor(Random.Range(0, itemsCarried.Count));
 		var lostItem = itemsCarried[lossIndex];
@@ -48,7 +52,7 @@ public class Inventory : MonoBehaviour
 
 		var itemComponent = lostItem.GetComponent<Item>();
 		if (itemComponent != null) {
-			itemComponent.pickupTimer = 0.5f;
+			itemComponent.pickupTimer = pickupTimer;
 		}
 
 		lostItem.SetActive(true);

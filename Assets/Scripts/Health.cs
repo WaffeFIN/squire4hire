@@ -24,7 +24,14 @@ public class Health : MonoBehaviour
 	}
 
     public void TakeDamage() {
-        currentHealth--;
+		var inventory = GetComponent<Inventory>();
+		if (inventory != null && inventory.itemsCarried.Count > 0) {
+			inventory.LoseRandomItem(1.5f);
+			inventory.LoseRandomItem(1.5f);
+			inventory.LoseRandomItem(1.5f);
+		} else {
+        	currentHealth--;
+		}
     }
 
     public void RecoverHealth(int amount) {
