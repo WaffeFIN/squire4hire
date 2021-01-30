@@ -58,6 +58,7 @@ public class Inventory : MonoBehaviour
 			imageManager.image.enabled = true;
 		}
 		lostItem.transform.position = gameObject.transform.position;
+		lostItem.GetComponent<Rigidbody2D>().velocity = 600 * Random.insideUnitCircle.normalized;
 	}
 
 	public void Pointsify(List<GameObject> targetList) {
