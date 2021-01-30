@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 1588379176}
   - component: {fileID: 1588379175}
   - component: {fileID: 1588379174}
+  - component: {fileID: 1588379180}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -513,6 +514,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1588379180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588379173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!1 &1609639665
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +735,7 @@ GameObject:
   - component: {fileID: 1979096380}
   - component: {fileID: 1979096379}
   - component: {fileID: 1979096378}
+  - component: {fileID: 1979096382}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -809,6 +824,19 @@ MonoBehaviour:
   armorPolish: 0
   polishingSpeedCoefficient: 10
   complaintInterval: 5.2
+--- !u!114 &1979096382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979096376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1 &2030896659
 GameObject:
   m_ObjectHideFlags: 0
