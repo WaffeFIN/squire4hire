@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
 			Destroy(gameObject);
 			var imageManager = GetComponent<ImageManager>();
 			if (imageManager != null) {
-				Destroy(image.gameObject);
+				Destroy(imageManager.image.gameObject);
 			}
 		}
 	}
