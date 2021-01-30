@@ -91,7 +91,7 @@ public class Hero : MonoBehaviour
 		} else {
 			if (swingTimer < 0) {
 				swingTimer = swingInterval;
-				var rotation = GetRotation(transform.position, other.transform.position);
+				var rotation = GetRotation(other.transform.position, transform.position);
 				var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
 				painZone.transform.Rotate(0, 0, rotation);
 

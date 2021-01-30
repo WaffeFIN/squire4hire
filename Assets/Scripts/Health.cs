@@ -12,6 +12,11 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+	void Update()
+	{
+		if (IsDead()) Destroy(gameObject);
+	}
+
     public void TakeDamage() {
         currentHealth--;
     }

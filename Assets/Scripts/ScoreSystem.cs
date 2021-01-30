@@ -13,6 +13,7 @@ public class ScoreSystem : MonoBehaviour
 	public static int totalDodges = 0;
 	public static int itemsLost = 0;
 	public static int armorPolishes = 0;
+	public static float distanceMoved = 0.0f;
 
 	public static int Score() {
 		return otherItemsRetrieved * 50 +

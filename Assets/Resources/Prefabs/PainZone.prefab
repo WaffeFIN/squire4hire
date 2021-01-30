@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 7174438677000272154}
   - component: {fileID: 1993457110277195267}
   - component: {fileID: 8491583080221619855}
-  - component: {fileID: 5533031108662395342}
-  - component: {fileID: 376986632949046924}
   m_Layer: 0
   m_Name: PainZone
   m_TagString: Untagged
@@ -80,39 +78,4 @@ MonoBehaviour:
   targetsOnly: 
   creator: {fileID: 0}
   knockback: {x: 0, y: 0}
---- !u!222 &5533031108662395342
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6032147356893764571}
-  m_CullTransparentMesh: 0
---- !u!114 &376986632949046924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6032147356893764571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  active: 20

@@ -9,9 +9,14 @@ public class PainZone : MonoBehaviour
 
 	public Vector2 knockback;
 
-	void Start() {
-		print("PainZone Pos  " + gameObject.transform.position);
-		print("PainZone Rot  " + gameObject.transform.rotation);
+	private int ticks = 5;
+
+	private List<GameObject> hits = new List<GameObject>();
+
+	void Update() {
+		if (ticks <= 0)
+			Destroy(gameObject);
+		ticks--;
 	}
 	
 	void OnTriggerStay2D(Collider2D other) {
@@ -22,18 +27,18 @@ public class PainZone : MonoBehaviour
 					return;
 				}
 			}
-			var health = other.GetComponent<Health>();
-			if (health != null) {
-				health.TakeDamage();
-			}
-			var rigidbody2d = other.GetComponent<Rigidbody2D>();
-			if (rigidbody2d != null) {
-				rigidbody2d.velocity += knockback;
+			if (!hits.Contains(other.gameObject)) {
+				hits.Add(other.gameObject);
+				var health = other.GetComponent<Health>();
+				if (health != null) {
+					health.TakeDamage();
+				}
+				var rigidbody2d = other.GetComponent<Rigidbody2D>();
+				if (rigidbody2d != null) {
+					rigidbody2d.velocity += knockback;
+				}
 			}
 		}
 	}
-
-	void LateUpdate() {
-		Destroy(gameObject);
-	}
+	
 }
