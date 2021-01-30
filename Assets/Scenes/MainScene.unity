@@ -933,6 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4868888dd67021ff8a8f80e6e880b194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imageObject: {fileID: 1431882678}
   dodging: -100
   dodgeSpeedMultiplier: 2.7
   dodgeTime: 0.4
@@ -941,6 +942,7 @@ MonoBehaviour:
   maxSpeed: 220
   acceleration: 22
   encumbered: 0
+  moving: 0
 --- !u!50 &1938423873
 Rigidbody2D:
   serializedVersion: 4

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementTarget : MonoBehaviour
 {
+
+	public GameObject imageObject;
 	public float dodging = 0.0f;
 	public float dodgeSpeedMultiplier;
 	public float dodgeTime; // dodge distance is limited by dx/dy (maxSpeed)
@@ -53,8 +55,8 @@ public class PlayerMovementTarget : MonoBehaviour
 
 
         moving = dx != 0.0f || dy != 0.0f;
-        var image = gameObject.GetComponent<ImageManager>().image;
-        var animator = image.gameObject.GetComponent<Animator>();
+		
+        var animator = imageObject.GetComponent<Animator>();
         animator.SetBool("moving", moving);
 
         if ((dx != 0.0f || dy != 0.0f) && Input.GetKeyDown("space") && dodging < -diveRecoverTime) {
