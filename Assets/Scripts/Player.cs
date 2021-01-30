@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-
-        if (col.gameObject.GetComponent<Item>() != null)
+		var itemComponent = col.gameObject.GetComponent<Item>();
+        if (itemComponent != null && itemComponent.pickupTimer < 0)
         {
             GetComponent<Inventory>().itemsCarried.Add(col.gameObject);
             col.gameObject.SetActive(false);

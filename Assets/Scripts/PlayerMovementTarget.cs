@@ -14,6 +14,7 @@ public class PlayerMovementTarget : MonoBehaviour
 
 	public bool encumbered = false; // when carrying things
 
+
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +40,10 @@ public class PlayerMovementTarget : MonoBehaviour
 
         if ((dx != 0.0f || dy != 0.0f) && Input.GetKeyDown("space") && dodging < -diveRecoverTime) {
 			dodging = dodgeTime;
+			if (Random.Range(0.0f, 1.0f) < ChanceOfItemLoss())
+			{
+				GetComponent<Inventory>().LoseRandomItem();
+			}
 		}
 		var targetMovement = GetComponent<TargetMovement>();
 		if (dodging > 0) {
@@ -52,4 +57,15 @@ public class PlayerMovementTarget : MonoBehaviour
 			}
 		}
     }
+
+	private float ChanceOfItemLoss()
+	{
+		var inventory = GetComponent<Inventory>();
+		var weight = inventory.Weight();
+		var maxWeight = inventory.maxWeight;
+		if (weight == maxWeight - 1) return 0.1f;
+		if (weight == maxWeight) return 0.5f;
+		if (weight > maxWeight) return 1.0f;
+		return 0.0f;
+	}
 }
