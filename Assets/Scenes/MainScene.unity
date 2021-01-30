@@ -1159,10 +1159,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 2055667333}
+  painZonePrefab: {fileID: 6032147356893764571, guid: 13a6d686b0f76163496c757ecd142081,
+    type: 3}
   maxArmorPolish: 30
   armorPolish: 1
   polishingSpeedCoefficient: 10
   complaintInterval: 5.2
+  swingInterval: 1
 --- !u!4 &1625156174
 Transform:
   m_ObjectHideFlags: 0
@@ -1572,7 +1575,6 @@ MonoBehaviour:
   diveRecoverTime: 0.8
   maxSpeed: 220
   acceleration: 22
-  encumbered: 0
 --- !u!50 &1938423873
 Rigidbody2D:
   serializedVersion: 4
