@@ -482,6 +482,9 @@ MonoBehaviour:
   waypointHandler: {fileID: 27241410}
   moving: 1
   currentWaypointTarget: {x: 150, y: 150}
+  aggroRange: 100
+  fatigue: 0
+  coolingDown: 0
 --- !u!4 &424717603
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,7 +1021,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077372953}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &1077372955
 Camera:
   m_ObjectHideFlags: 0
@@ -2022,7 +2025,7 @@ MonoBehaviour:
     loop: 0
   - name: music
     clip: {fileID: 8300000, guid: 3f8f5aa4750f1a34fadf7cba91aadd83, type: 3}
-    volume: 1
+    volume: 0.04
     pitch: 1
     loop: 0
   - name: va_fail
