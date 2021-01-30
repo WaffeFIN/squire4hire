@@ -14,12 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject inventoryContent;
 
     private bool isGameOngoing = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private int previousCount = -1;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +28,8 @@ public class GameController : MonoBehaviour
             pauseMenu.SetActive(!isGameOngoing);
         }
 
-        if (playerInventory.itemsCarried.Count > 0) {
+        if (previousCount != playerInventory.itemsCarried.Count) {
+			previousCount = playerInventory.itemsCarried.Count;
             var content = "";
             for (int i = 0; i < playerInventory.itemsCarried.Count; i++)
             {
