@@ -34,7 +34,10 @@ public class Item : MonoBehaviour
         }
 
 		decay -= Time.deltaTime;
-		if (decay < 0.0f) Destroy(gameObject);
+		if (decay < 0.0f) {
+			ScoreSystem.itemsLost++;
+			Destroy(gameObject);
+		}
     }
 
     public string GetName() {
