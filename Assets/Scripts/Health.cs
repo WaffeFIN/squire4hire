@@ -14,7 +14,13 @@ public class Health : MonoBehaviour
 
 	void Update()
 	{
-		if (IsDead()) Destroy(gameObject);
+		if (IsDead()) {
+			Destroy(gameObject);
+			var imageManager = GetComponent<ImageManager>();
+			if (imageManager != null) {
+				Destroy(image.gameObject);
+			}
+		}
 	}
 
     public void TakeDamage() {
