@@ -29,6 +29,7 @@ public class Hero : MonoBehaviour
     private float nextItemSpawn = 4.0f;
     private float complaintTimer = 20.0f;
 	private float swingTimer = 1.0f;
+	private float? swingTowards = null;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +72,19 @@ public class Hero : MonoBehaviour
             }
 		}
 
+		if (swingTowards != null && swingTimer < swingInterval * 0.875)
+		{
+			var rotation = (float) swingTowards;
+			var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
+			painZone.transform.Rotate(0, 0, rotation);
+
+			var painZoneComponent = painZone.GetComponent<PainZone>();
+			painZoneComponent.creator = gameObject;
+			var knockbackStrength = 250;
+			painZoneComponent.knockback = (Vector2)(Quaternion.Euler(0, 0, rotation) * Vector2.right) * knockbackStrength;
+			swingTowards = null;
+		}
+
     }
 
 	float GetRotation(Vector2 v2a, Vector2 v2b) {
@@ -103,16 +117,10 @@ public class Hero : MonoBehaviour
                 var animator = imageObject.GetComponent<Animator>();
                 animator.SetBool("swinging", swinging);
 
+				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 5.0f));
+                FindObjectOfType<AudioManager>().Play("sword_swoosh_" + randomIndex);
                 swingTimer = swingInterval;
-                var rotation = GetRotation(other.transform.position, transform.position);
-
-                var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
-				painZone.transform.Rotate(0, 0, rotation);
-
-				var painZoneComponent = painZone.GetComponent<PainZone>();
-				painZoneComponent.creator = gameObject;
-				var knockbackStrength = 250;
-				painZoneComponent.knockback = (Vector2)(Quaternion.Euler(0, 0, rotation) * Vector2.right) * knockbackStrength;
+				swingTowards = GetRotation(other.transform.position, transform.position);
 			}
 		}
 	}
