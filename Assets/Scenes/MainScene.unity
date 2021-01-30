@@ -1463,6 +1463,7 @@ GameObject:
   - component: {fileID: 1625156177}
   - component: {fileID: 1625156178}
   - component: {fileID: 1625156179}
+  - component: {fileID: 1625156180}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -1596,6 +1597,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWeight: 999
   itemsCarried: []
+--- !u!114 &1625156180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625156172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
 --- !u!1 &1637507162
 GameObject:
   m_ObjectHideFlags: 0

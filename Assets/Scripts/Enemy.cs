@@ -7,15 +7,25 @@ public class Enemy : MonoBehaviour
 {
     public Sprite SpriteRef;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public float swingInterval = 1.1f;
+	public float damageDelay = 0.5f;
+	private float swingTimer = 1.1f;
+	private GameObject damageTarget = null;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        swingTimer -= Time.deltaTime;
+		if (damageTarget != null && swingTimer < damageDelay) {
+			damageTarget.GetComponent<Health>().TakeDamage(1);
+			damageTarget = null;
+		}
     }
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.tag == "Hero") {
+			swingTimer = swingInterval;
+			damageTarget = other.gameObject;
+		}
+	}
 }
