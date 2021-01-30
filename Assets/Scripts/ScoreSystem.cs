@@ -8,6 +8,7 @@ public class ScoreSystem : MonoBehaviour
 	public static int otherItemsRetrieved = 0;
 	public static int weaponsRetrieved = 0;
 	public static int armorPartsRetrieved = 0;
+	public static int tripleRetrievals = 0;
 	public static int hitsDodged = 0;
 	public static int totalDodges = 0;
 	public static int itemsLost = 0;
@@ -17,6 +18,7 @@ public class ScoreSystem : MonoBehaviour
 		return otherItemsRetrieved * 50 +
 			weaponsRetrieved * 100 +
 			armorPartsRetrieved * 75 +
+			tripleRetrievals * 100 + 
 			hitsDodged * 5 -
 			itemsLost * 25 +
 			armorPolishes * 250;

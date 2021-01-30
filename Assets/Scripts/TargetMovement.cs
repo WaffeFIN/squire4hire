@@ -30,4 +30,14 @@ public class TargetMovement : MonoBehaviour
 			rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
 		}
     }
+
+	public bool IsCloseToTargetX() {
+		var dx = target.x - transform.position.x;
+		return Mathf.Abs(dx) < DISPLACEMENT_EPSILON;
+	}
+
+	public bool IsCloseToTargetY() {
+		var dy = target.y - transform.position.y;
+		return Mathf.Abs(dy) < DISPLACEMENT_EPSILON;
+	}
 }

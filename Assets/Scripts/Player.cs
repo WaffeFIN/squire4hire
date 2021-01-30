@@ -21,19 +21,7 @@ public class Player : MonoBehaviour
 		var itemComponent = col.gameObject.GetComponent<Item>();
         if (itemComponent != null && itemComponent.pickupTimer < 0)
         {
-            var inventoryComponent = GetComponent<Inventory>();
-
-            if (inventoryComponent.Weight() + itemComponent.ItemWeight <= inventoryComponent.maxWeight) {
-
-                inventoryComponent.itemsCarried.Add(col.gameObject);
-                col.gameObject.SetActive(false);
-                var imageManager = col.gameObject.GetComponent<ImageManager>();
-                if (imageManager != null)
-                {
-                    imageManager.image.enabled =false;
-                }
-            }
-
+			GetComponent<Inventory>().AddItem(col.gameObject, itemComponent.ItemWeight);
         }
     }
     void Update()

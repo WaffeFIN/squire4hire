@@ -14,8 +14,10 @@ public class PlayerMovementTarget : MonoBehaviour
 	public float maxSpeed;
 	public float acceleration;
 
-	public bool encumbered = false; // when carrying things
+
+	private bool encumbered = false;
     public bool moving = false;
+
 
 
     // Update is called once per frame
@@ -64,6 +66,7 @@ public class PlayerMovementTarget : MonoBehaviour
 				GetComponent<Inventory>().LoseRandomItem();
 			}
 		}
+		encumbered = GetComponent<Inventory>().IsFull();
 		var targetMovement = GetComponent<TargetMovement>();
 		if (dodging > 0) {
 			targetMovement.maxSpeed = maxSpeed * dodgeSpeedMultiplier;

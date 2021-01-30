@@ -20,5 +20,13 @@ public class Item : MonoBehaviour
     void Update()
     {
 		if (pickupTimer >= 0) pickupTimer -= Time.deltaTime;
+
+        var itemBody = GetComponent<Rigidbody2D>();
+        if (itemBody.velocity.magnitude > 0) {
+            itemBody.velocity -= 15f * itemBody.velocity.normalized;
+            if (itemBody.velocity.magnitude < 15f) {
+                itemBody.velocity = new Vector2();
+            }
+        }
     }
 }
