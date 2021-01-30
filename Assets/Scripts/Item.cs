@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
     public Sprite SpriteRef; //delete?
     public int ItemWeight = 1;
 
-    private string itemName = "Arrow";
+    public string itemName;
 
 	public float pickupTimer = 0.5f;
 

@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpriteRef: {fileID: 0}
   ItemWeight: 1
+  itemName: 
+  pickupTimer: 0.5
 --- !u!114 &1928437648846717980
 MonoBehaviour:
   m_ObjectHideFlags: 0
