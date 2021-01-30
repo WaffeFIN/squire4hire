@@ -20,16 +20,20 @@ public class PlayerMovementTarget : MonoBehaviour
 		dodging -= Time.deltaTime;
 		var dx = 0.0f;
 		var dy = 0.0f;
-		if (Input.GetKey("up")) {
+		if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
+        {
 			dy += maxSpeed;
 		}
-		if (Input.GetKey("down")) {
-			dy -= maxSpeed;
+		if (Input.GetKey("down") || Input.GetKey(KeyCode.S)) 
+        {
+            dy -= maxSpeed;
 		}
-		if (Input.GetKey("right")) {
+		if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
+        {
 			dx += maxSpeed;
 		}
-		if (Input.GetKey("left")) {
+		if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
+        {
 			dx -= maxSpeed;
 		}
 

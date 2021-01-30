@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-    public Sprite SpriteRef;
-    public int ItemWeight = 1;
-    
+
+    public List<GameObject> itemsCarried = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -17,5 +16,6 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 }
