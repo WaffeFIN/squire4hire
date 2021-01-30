@@ -13,12 +13,12 @@ public class Hero : MonoBehaviour
 	}
 
 	public HeroState state = HeroState.Bashing;
-    public float complaintInterval = 1.2;
+    public float complaintInterval = 1.2f;
 
     //temporary spawnTimer
-    private float nextItemSpawn = 4;
-    private float armorPolish = 42;
-    private float complaintTimer = 1.2;
+    private float nextItemSpawn = 4.0f;
+    private float armorPolish = 42.0f;
+    private float complaintTimer = 1.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Hero : MonoBehaviour
 		if (armorPolish <= 0) {
 			state = HeroState.ComplainingAboutDirt;
 		} else {
-			armorPolish -= Time.timeDelta;
+			armorPolish -= Time.deltaTime;
 		}
 		if (Time.time > nextItemSpawn) {
 			spawner.SpawnItem("arrow-1", transform);
