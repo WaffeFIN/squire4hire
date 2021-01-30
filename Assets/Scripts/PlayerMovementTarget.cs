@@ -41,11 +41,9 @@ public class PlayerMovementTarget : MonoBehaviour
 			dx -= maxSpeed;
 		}
 
-        if (dx > 0)
+        if (dx != 0)
         {
-            Vector2 theScale = transform.localScale;
-            theScale.x = -1.0f;
-            transform.localScale = new Vector2(-1.0f, 1.0f);
+            imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
 
         if (dx < 0)
