@@ -17,6 +17,8 @@ public class PlayerMovementTarget : MonoBehaviour
 
 	private bool encumbered = false;
     public bool moving = false;
+    public bool previousMoving = true;
+
 
 
 
@@ -48,14 +50,19 @@ public class PlayerMovementTarget : MonoBehaviour
             imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
 
-        if (dx < 0)
+
+        previousMoving = moving;
+        moving = dx != 0.0f || dy != 0.0f;
+
+        if (!previousMoving && moving)
         {
-            //transform.localRotation = Quaternion.Euler(0, 180, 0);
+            FindObjectOfType<AudioManager>().Play("footsteps");
+        }
+        if (previousMoving && !moving)
+        {
+            FindObjectOfType<AudioManager>().Stop("footsteps");
         }
 
-
-        moving = dx != 0.0f || dy != 0.0f;
-		
         var animator = imageObject.GetComponent<Animator>();
         animator.SetBool("moving", moving);
 
@@ -65,6 +72,7 @@ public class PlayerMovementTarget : MonoBehaviour
 			{
 				GetComponent<Inventory>().LoseRandomItem();
 			}
+            FindObjectOfType<AudioManager>().Play("dash");
 		}
 		encumbered = GetComponent<Inventory>().IsFull();
 		var targetMovement = GetComponent<TargetMovement>();
