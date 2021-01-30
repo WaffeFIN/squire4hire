@@ -12,13 +12,15 @@ public class Hero : MonoBehaviour
 		ComplainingAboutDirt
 	}
 
-	public HeroState state = HeroState.Bashing;
-    public float complaintInterval = 1.2f;
+    public float maxArmorPolish;
+    public float armorPolish;
+    public float polishingSpeedCoefficient = 10.0f;
+    public float complaintInterval = 5.2f;
 
     //temporary spawnTimer
+	private HeroState state = HeroState.Bashing;
     private float nextItemSpawn = 4.0f;
-    private float armorPolish = 42.0f;
-    private float complaintTimer = 1.2f;
+    private float complaintTimer = 5.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +41,24 @@ public class Hero : MonoBehaviour
 			var spawnTime = Random.Range(1.2f, 3.0f);
 			nextItemSpawn += spawnTime * spawnTime;
 		}
+		if (state == HeroState.ComplainingAboutDirt) {
+			complaintTimer -= Time.deltaTime;
+			if (complaintTimer < 0) {
+				complaintTimer += complaintInterval;
+				//TODO Complain
+				print("Complaint!");
+			}
+		}
     }
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.tag == "Player" && state == HeroState.ComplainingAboutDirt) {
+			armorPolish += Time.deltaTime * polishingSpeedCoefficient;
+			if (armorPolish > maxArmorPolish) {
+				armorPolish = maxArmorPolish;
+				state = HeroState.Bashing;
+			}
+		}
+	}
 }
