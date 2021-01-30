@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class EnemySpawner : MonoBehaviour
 {
     public Canvas canvas;
+    // Get proper layering this way
+    public GameObject enemyUI;
 
     //temporary spawnTimer
     private float nextSpawn = 1;
@@ -49,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         Image image = imgObject.AddComponent<Image>();
         image.sprite = spriteRef;
         image.color = new Color(1f, 0.1f, 0.1f);
-        imgObject.transform.SetParent(canvas.transform);
+        imgObject.transform.SetParent(enemyUI.transform);
         return image;
     }
     

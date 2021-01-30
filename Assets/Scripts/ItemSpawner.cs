@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public Canvas canvas;
+    // Get proper layering this way
+    public GameObject itemUI;
 
     private Dictionary<string, GameObject> PrefabDic;
     void Awake() {
@@ -34,7 +35,7 @@ public class ItemSpawner : MonoBehaviour
 
         Image image = imgObject.AddComponent<Image>();
         image.sprite = spriteRef;
-        imgObject.transform.SetParent(canvas.transform);
+        imgObject.transform.SetParent(itemUI.transform);
         return image;
     }
     
