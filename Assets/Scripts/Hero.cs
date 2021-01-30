@@ -25,7 +25,7 @@ public class Hero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(200, 200);
+        transform.position = new Vector3();
 		var inventory = GetComponent<Inventory>();
 		for (int i = 0; i < 15; i++) {
 			var arrow = spawner.SpawnItem("arrow-1", transform);
