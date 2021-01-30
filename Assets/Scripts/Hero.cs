@@ -21,7 +21,7 @@ public class Hero : MonoBehaviour
     {
         if (Time.time > nextSpawn) {
             spawner.SpawnItem("arrow-1", transform);
-            nextSpawn += 4;
+            nextSpawn += 2;
         }
     }
 }
