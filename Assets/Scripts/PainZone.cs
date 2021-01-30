@@ -24,6 +24,7 @@ public class PainZone : MonoBehaviour
 			if (other.tag == "Player") {
 				if (other.GetComponent<PlayerMovementTarget>().dodging >= 0) {
 					ScoreSystem.hitsDodged++;
+					hits.Add(other.gameObject); //ignore player
 					return;
 				}
 			}
