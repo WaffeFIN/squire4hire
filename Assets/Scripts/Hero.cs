@@ -97,7 +97,7 @@ public class Hero : MonoBehaviour
 
 				var painZoneComponent = painZone.GetComponent<PainZone>();
 				painZoneComponent.creator = gameObject;
-				var knockbackStrength = 50;
+				var knockbackStrength = 250;
 				painZoneComponent.knockback = (Vector2)(Quaternion.Euler(0, 0, rotation) * Vector2.right) * knockbackStrength;
 			}
 		}
