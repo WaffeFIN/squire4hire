@@ -13,14 +13,15 @@ public class ScoreSystem : MonoBehaviour
 	public static int totalDodges = 0;
 	public static int itemsLost = 0;
 	public static int armorPolishes = 0;
+	public static float distanceMoved = 0.0f;
 
 	public static int Score() {
 		return otherItemsRetrieved * 50 +
 			weaponsRetrieved * 100 +
 			armorPartsRetrieved * 75 +
 			tripleRetrievals * 100 + 
-			hitsDodged * 5 -
-			itemsLost * 25 +
+			hitsDodged * 25 -
+			itemsLost * 50 +
 			armorPolishes * 250;
 	}
 }

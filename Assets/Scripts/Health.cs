@@ -12,6 +12,17 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+	void Update()
+	{
+		if (IsDead()) {
+			Destroy(gameObject);
+			var imageManager = GetComponent<ImageManager>();
+			if (imageManager != null) {
+				Destroy(image.gameObject);
+			}
+		}
+	}
+
     public void TakeDamage() {
         currentHealth--;
     }

@@ -21,13 +21,13 @@ public class Hero : MonoBehaviour
     public float maxArmorPolish;
     public float armorPolish;
     public float polishingSpeedCoefficient = 10.0f;
-    public float complaintInterval = 5.2f;
+    public float complaintInterval = 25.2f;
 	public float swingInterval = 1.0f;
 
     //temporary spawnTimer
 	private HeroState state = HeroState.Bashing;
     private float nextItemSpawn = 4.0f;
-    private float complaintTimer = 5.2f;
+    private float complaintTimer = 20.0f;
 	private float swingTimer = 1.0f;
 
     // Start is called before the first frame update
@@ -39,6 +39,8 @@ public class Hero : MonoBehaviour
 			var arrow = spawner.SpawnItem("arrow-1", transform);
 			inventory.AddItem(arrow);
 		}
+
+        FindObjectOfType<AudioManager>().Play("music");
     }
 
     // Update is called once per frame
@@ -65,8 +67,10 @@ public class Hero : MonoBehaviour
 				complaintTimer += complaintInterval;
 				//TODO Complain
 				print("Complaint!");
-			}
+                FindObjectOfType<AudioManager>().Play("va_polish_armor_command_1");
+            }
 		}
+
     }
 
 	float GetRotation(Vector2 v2a, Vector2 v2b) {
@@ -80,7 +84,8 @@ public class Hero : MonoBehaviour
 			switch (state) {
 				case HeroState.ComplainingAboutDirt:
 					armorPolish += Time.deltaTime * polishingSpeedCoefficient;
-					if (armorPolish > maxArmorPolish) {
+                    // FindObjectOfType<AudioManager>().Play("armor_polish");
+                    if (armorPolish > maxArmorPolish) {
 						armorPolish = maxArmorPolish;
 						state = HeroState.Bashing;
 					}
@@ -95,18 +100,18 @@ public class Hero : MonoBehaviour
 			}
 		} else {
 			if (swingTimer < 0) {
-
-               var animator = imageObject.GetComponent<Animator>();
-               animator.SetBool("swinging", swinging);
+                var animator = imageObject.GetComponent<Animator>();
+                animator.SetBool("swinging", swinging);
 
                 swingTimer = swingInterval;
-				var rotation = GetRotation(transform.position, other.transform.position);
-				var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
+                var rotation = GetRotation(other.transform.position, transform.position);
+
+                var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
 				painZone.transform.Rotate(0, 0, rotation);
 
 				var painZoneComponent = painZone.GetComponent<PainZone>();
 				painZoneComponent.creator = gameObject;
-				var knockbackStrength = 50;
+				var knockbackStrength = 250;
 				painZoneComponent.knockback = (Vector2)(Quaternion.Euler(0, 0, rotation) * Vector2.right) * knockbackStrength;
 			}
 		}

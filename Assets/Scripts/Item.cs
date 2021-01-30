@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Sprite SpriteRef;
+    public Sprite SpriteRef; //delete?
     public int ItemWeight = 1;
 
     private string itemName = "Arrow";
@@ -34,7 +34,11 @@ public class Item : MonoBehaviour
         }
 
 		decay -= Time.deltaTime;
-		if (decay < 0.0f) Destroy(gameObject);
+		if (decay < 0.0f) {
+			ScoreSystem.itemsLost++;
+			Destroy(GetComponent<ImageManager>().image.gameObject);
+			Destroy(gameObject);
+		}
     }
 
     public string GetName() {

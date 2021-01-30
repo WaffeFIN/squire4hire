@@ -17,6 +17,8 @@ public class PlayerMovementTarget : MonoBehaviour
 
 	private bool encumbered = false;
     public bool moving = false;
+    public bool previousMoving = true;
+
 
 
 
@@ -49,8 +51,20 @@ public class PlayerMovementTarget : MonoBehaviour
         }
 
 
+
+        previousMoving = moving;
         moving = dx != 0.0f || dy != 0.0f;
-		
+
+        if (!previousMoving && moving)
+        {
+            FindObjectOfType<AudioManager>().Play("footsteps");
+        }
+        if (previousMoving && !moving)
+        {
+            FindObjectOfType<AudioManager>().Stop("footsteps");
+        }
+
+
         var animator = imageObject.GetComponent<Animator>();
         animator.SetBool("moving", moving);
 
@@ -60,6 +74,7 @@ public class PlayerMovementTarget : MonoBehaviour
 			{
 				GetComponent<Inventory>().LoseRandomItem();
 			}
+            FindObjectOfType<AudioManager>().Play("dash");
 		}
 		encumbered = GetComponent<Inventory>().IsFull();
 		var targetMovement = GetComponent<TargetMovement>();
