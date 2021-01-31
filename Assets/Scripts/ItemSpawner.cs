@@ -32,7 +32,7 @@ public class ItemSpawner : MonoBehaviour
         trans.anchoredPosition = new Vector2(0.5f, 0.5f);
         trans.localPosition = new Vector3(0, 0, 0);
         trans.position = new Vector3(0, 0, 0);
-        trans.sizeDelta = new Vector2(32, 32);
+        trans.sizeDelta = new Vector2(16, 16);
 
         Image image = imgObject.AddComponent<Image>();
         image.sprite = spriteRef;
