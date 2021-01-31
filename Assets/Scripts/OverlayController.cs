@@ -15,6 +15,7 @@ public class OverlayController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
     public GameObject inventoryContent;
+    public Text healthText;
 
     private bool isGameOngoing = true;
 	private int previousCount = -1;
@@ -62,5 +63,8 @@ public class OverlayController : MonoBehaviour
             inventoryContent.GetComponent<Text>().text = content;
             inventoryContent.GetComponent<Text>().color = playerInventory.IsFull() ? new Color(1f, 0.1f, 0.1f) : new Color(1f, 1f, 1f);
         }
+
+		var playerHealth = player.GetComponent<Health>();
+		healthText.text = "HP\n" + playerHealth.currentHealth;
     }
 }
