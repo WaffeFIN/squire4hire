@@ -113,7 +113,10 @@ public class Hero : MonoBehaviour
         var dx = -GetComponent<Rigidbody2D>().velocity.x;
 
         if (Mathf.Abs(dx) > 20.0 ){
-
+            complaintObject.transform.localScale = new Vector2(
+				-Mathf.Sign(dx) * Mathf.Abs(complaintObject.transform.localScale.x),
+				complaintObject.transform.localScale.y
+			);
             imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
         
