@@ -8,6 +8,7 @@ public class OverlayController : MonoBehaviour
 {
     public Camera currentCamera;
     public GameObject player;
+    public GameObject hero;
 
     // Overlay visuals
     public GameObject overlay;
@@ -32,14 +33,14 @@ public class OverlayController : MonoBehaviour
 
         if (isGameOver) { return; }
 
-        if (Input.GetKeyDown(KeyCode.P)) {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             isGameOngoing = !isGameOngoing;
             Time.timeScale = isGameOngoing ? 1 : 0;
             pauseMenu.SetActive(!isGameOngoing);
             darkBackdrop.SetActive(!isGameOngoing);
         }
 
-        if (player.GetComponent<Health>().IsDead()) {
+        if (player.GetComponent<Health>().IsDead() || hero.GetComponent<Health>().IsDead()) {
             isGameOver = true;
             isGameOngoing = false;
             Time.timeScale = 0;

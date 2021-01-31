@@ -20,10 +20,14 @@ public class Health : MonoBehaviour
             	FindObjectOfType<AudioManager>().Stop("footsteps");
 				FindObjectOfType<AudioManager>().Play("va_squire_death_" + randomIndex);
 			}
-			Destroy(gameObject);
-			var imageManager = GetComponent<ImageManager>();
-			if (imageManager != null) {
-				Destroy(imageManager.image.gameObject);
+
+			// Let's not destroy the one holding our camera
+			if (gameObject.tag != "Hero") {
+				Destroy(gameObject);
+				var imageManager = GetComponent<ImageManager>();
+				if (imageManager != null) {
+					Destroy(imageManager.image.gameObject);
+				}
 			}
 		}
 	}

@@ -18,14 +18,14 @@ public class Hero : MonoBehaviour
 
     public float maxArmorPolish;
     public float armorPolish;
-    public float polishingSpeedCoefficient = 10.0f;
-    public float complaintInterval = 25.2f;
+    public float polishingSpeedCoefficient = 5.0f;
+    public float complaintInterval = 15.2f;
 	public float swingInterval = 1.0f;
 
     //temporary spawnTimer
 	private HeroState state = HeroState.Bashing;
     private float nextItemSpawn = 4.0f;
-    private float complaintTimer = 20.0f;
+    private float complaintTimer = 0.0f;
 	private float swingTimer = 1.0f;
 	private float? swingTowards = null;
 
@@ -62,7 +62,7 @@ public class Hero : MonoBehaviour
 		if (armorPolish <= 0) {
 			state = HeroState.ComplainingAboutDirt;
 		} else {
-			armorPolish -= Time.deltaTime;
+			armorPolish -= Time.deltaTime * 5;
 		}
 
 		if (Time.time > nextItemSpawn) {
@@ -79,6 +79,11 @@ public class Hero : MonoBehaviour
 				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 2.0f));
                 FindObjectOfType<AudioManager>().Play("va_polish_armor_command_" + randomIndex);
             }
+			
+			if (armorPolish > maxArmorPolish) {
+				armorPolish = maxArmorPolish;
+				state = HeroState.Bashing;
+			}
 		}
 
 		if (swingTowards != null && swingTimer < swingInterval * 0.875)
@@ -109,11 +114,9 @@ public class Hero : MonoBehaviour
 		if (other.tag == "Player") {
 			switch (state) {
 				case HeroState.ComplainingAboutDirt:
-					armorPolish += Time.deltaTime * polishingSpeedCoefficient;
-                    // FindObjectOfType<AudioManager>().Play("armor_polish");
-                    if (armorPolish > maxArmorPolish) {
-						armorPolish = maxArmorPolish;
-						state = HeroState.Bashing;
+					if (Input.GetKeyDown(KeyCode.P)) {
+						armorPolish += polishingSpeedCoefficient;
+                    	FindObjectOfType<AudioManager>().Play("armor_polish");
 					}
 					break;
 				case HeroState.Bashing:
