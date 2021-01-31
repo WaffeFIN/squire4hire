@@ -15,6 +15,7 @@ public class OverlayController : MonoBehaviour
     public GameObject menuBox;
     public GameObject pauseText;
     public GameObject gameOverText;
+    public Text scoreNumber;
     public GameObject inventoryContent;
     public GameObject titleText;
     public GameObject introText;
@@ -60,6 +61,7 @@ public class OverlayController : MonoBehaviour
             introText.SetActive(false);
             restartText.SetActive(true);
             quiteText.SetActive(true);
+            scoreNumber.text = "" + ScoreSystem.Score();
         }
 
         if (player.GetComponent<Health>().IsDead() || hero.GetComponent<Health>().IsDead()) {
@@ -68,6 +70,7 @@ public class OverlayController : MonoBehaviour
             Time.timeScale = 0;
             gameOverText.SetActive(true);
             menuBox.SetActive(true);
+            scoreNumber.text = "" + ScoreSystem.Score();
         }
 
         var playerInventory = player.GetComponent<Inventory>();
