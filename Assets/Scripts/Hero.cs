@@ -32,11 +32,22 @@ public class Hero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        List<string> inventoryContent = new List<string>()
+            {
+                "arrow-1",
+                "mace",
+                "potion",
+                "shortbow"
+            };
+        
         transform.position = new Vector3();
 		var inventory = GetComponent<Inventory>();
-		for (int i = 0; i < 15; i++) {
-			var arrow = spawner.SpawnItem("arrow-1", transform);
-			inventory.AddItem(arrow);
+		for (int i = 0; i < 15; i++)
+        {
+            var inventoryAccessor = (int)Mathf.Ceil(Random.Range(0.0f, 3.0f));
+
+            var randomItem = spawner.SpawnItem(inventoryContent[inventoryAccessor], transform);
+			inventory.AddItem(randomItem);
 		}
 
         FindObjectOfType<AudioManager>().Play("music");

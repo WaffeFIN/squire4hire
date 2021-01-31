@@ -61,6 +61,9 @@ public class ItemSpawner : MonoBehaviour
 	}
 
     private static readonly List<string> ITEM_LEGEND = new List<string>() {
-		"arrow-1"
-	};
+        "arrow-1",
+        "mace",
+        "potion",
+        "shortbow"
+    };
 }
