@@ -8,6 +8,7 @@ public class Hero : MonoBehaviour
     public ItemSpawner spawner;
 
     public GameObject imageObject;
+	private GameObject complaintObject;
 
     public enum HeroState {
 		Bashing,
@@ -50,6 +51,9 @@ public class Hero : MonoBehaviour
 			inventory.AddItem(randomItem);
 		}
 
+		complaintObject = imageObject.GetComponentInChildren<Text>().gameObject;
+		complaintObject.SetActive(false);
+
         FindObjectOfType<AudioManager>().Play("music");
     }
 
@@ -60,6 +64,7 @@ public class Hero : MonoBehaviour
         swingTimer -= Time.deltaTime;
 
 		if (armorPolish <= 0) {
+			complaintObject.SetActive(true);
 			state = HeroState.ComplainingAboutDirt;
 		} else {
 			armorPolish -= Time.deltaTime * 5;
@@ -82,6 +87,8 @@ public class Hero : MonoBehaviour
 			
 			if (armorPolish > maxArmorPolish) {
 				armorPolish = maxArmorPolish;
+				complaintObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Play("va_squire_moan");
 				state = HeroState.Bashing;
 			}
 		}
