@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
 		if (IsDead()) {
 			if (gameObject.tag == "Player") {
 				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 2.0f));
+            	FindObjectOfType<AudioManager>().Stop("footsteps");
 				FindObjectOfType<AudioManager>().Play("va_squire_death_" + randomIndex);
 			}
 			Destroy(gameObject);
