@@ -12,9 +12,9 @@ public class OverlayController : MonoBehaviour
 
     // Overlay visuals
     public GameObject overlay;
-    public GameObject darkBackdrop;
-    public GameObject pauseMenu;
-    public GameObject gameOverMenu;
+    public GameObject menuBox;
+    public GameObject pauseText;
+    public GameObject gameOverText;
     public GameObject inventoryContent;
     public Text healthText;
 
@@ -27,8 +27,18 @@ public class OverlayController : MonoBehaviour
         var currentCameraPosition = currentCamera.transform.position;
         overlay.transform.position = new Vector2(currentCameraPosition.x, currentCameraPosition.y);
 
-        if (!isGameOngoing && Input.GetKeyDown(KeyCode.R)) {
-            SceneManager.LoadScene(0);
+        if (!isGameOngoing) {
+            if(Input.GetKeyDown(KeyCode.R)) {
+                // Doesn't work properly yet
+                // SceneManager.LoadScene(0);
+            }
+            if(Input.GetKeyDown(KeyCode.Q)) {
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }
         }
 
         if (isGameOver) { return; }
@@ -36,16 +46,16 @@ public class OverlayController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             isGameOngoing = !isGameOngoing;
             Time.timeScale = isGameOngoing ? 1 : 0;
-            pauseMenu.SetActive(!isGameOngoing);
-            darkBackdrop.SetActive(!isGameOngoing);
+            pauseText.SetActive(!isGameOngoing);
+            menuBox.SetActive(!isGameOngoing);
         }
 
         if (player.GetComponent<Health>().IsDead() || hero.GetComponent<Health>().IsDead()) {
             isGameOver = true;
             isGameOngoing = false;
             Time.timeScale = 0;
-            gameOverMenu.SetActive(true);
-            darkBackdrop.SetActive(true);
+            gameOverText.SetActive(true);
+            menuBox.SetActive(true);
         }
 
         var playerInventory = player.GetComponent<Inventory>();
@@ -62,7 +72,7 @@ public class OverlayController : MonoBehaviour
             }
            
             inventoryContent.GetComponent<Text>().text = content;
-            inventoryContent.GetComponent<Text>().color = playerInventory.IsFull() ? new Color(1f, 0.1f, 0.1f) : new Color(1f, 1f, 1f);
+            inventoryContent.GetComponent<Text>().color = playerInventory.IsFull() ? new Color(0.9f, 0.2f, 0.2f) : new Color(1f, 1f, 1f);
         }
 
 		var playerHealth = player.GetComponent<Health>();
