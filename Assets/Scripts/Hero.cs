@@ -21,6 +21,7 @@ public class Hero : MonoBehaviour
     public float polishingSpeedCoefficient = 5.0f;
     public float complaintInterval = 15.2f;
 	public float swingInterval = 1.0f;
+    public bool swinging = false; 
 
     //temporary spawnTimer
 	private HeroState state = HeroState.Bashing;
@@ -99,8 +100,18 @@ public class Hero : MonoBehaviour
 			swingTowards = null;
 
             var animator = imageObject.GetComponent<Animator>();
+            swinging = false;
             animator.SetBool("swinging", false);
 		}
+
+
+        var dx = -GetComponent<Rigidbody2D>().velocity.x;
+
+        if (Mathf.Abs(dx) > 20.0 ){
+
+            imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
+        }
+        
 
     }
 
@@ -130,6 +141,7 @@ public class Hero : MonoBehaviour
 		} else {
 			if (swingTimer < 0) {
                 var animator = imageObject.GetComponent<Animator>();
+                swinging = true;
                 animator.SetBool("swinging", true);
 
 				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 5.0f));

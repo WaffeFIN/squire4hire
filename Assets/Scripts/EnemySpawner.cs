@@ -57,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
         imgObject.transform.SetParent(enemyUI.transform);
         Animator anim = imgObject.AddComponent<Animator>();
         anim.runtimeAnimatorController = animator.runtimeAnimatorController;
+        animator.SetBool("gnoming", true);
         return image;
     }
     

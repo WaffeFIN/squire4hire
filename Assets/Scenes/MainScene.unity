@@ -948,7 +948,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -15, y: -282}
-  m_SizeDelta: {x: 32, y: 32}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726390733
 MonoBehaviour:
@@ -1839,6 +1839,7 @@ MonoBehaviour:
   polishingSpeedCoefficient: 30
   complaintInterval: 15.2
   swingInterval: 1
+  swinging: 0
 --- !u!4 &1625156174
 Transform:
   m_ObjectHideFlags: 0
