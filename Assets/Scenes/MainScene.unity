@@ -1954,6 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   maxHealth: 10
 --- !u!1 &1637507162
 GameObject:
@@ -2197,8 +2198,8 @@ MonoBehaviour:
   dodgeTime: 0.4
   dodgeRecoverTime: 0.2
   diveRecoverTime: 0.8
-  maxSpeed: 220
-  acceleration: 22
+  maxSpeed: 160
+  acceleration: 20
   moving: 0
   previousMoving: 1
 --- !u!50 &1938423873
@@ -2287,6 +2288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
   maxHealth: 3
 --- !u!114 &1938423878
 MonoBehaviour:
