@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 	private float swingTimer = 1.1f;
 	private GameObject damageTarget = null;
 
+
     void Update()
     {
         swingTimer -= Time.deltaTime;

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: d96a9d18e9c52c8429a30dc0916695cf
+guid: f4dc74e949fda9947a6588cee87fb5a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4023731345118396899
-    second: ENEMY_gnome_0
+      213: -1969924969352021640
+    second: NEW_gnome_0
   - first:
-      213: 3947458540098733257
-    second: ENEMY_gnome_1
+      213: -4873825123305903630
+    second: NEW_gnome_1
   - first:
-      213: 8429354660248937600
-    second: ENEMY_gnome_2
+      213: -8337806085180095814
+    second: NEW_gnome_2
   - first:
-      213: -6278577630376203020
-    second: ENEMY_gnome_3
+      213: 2461489345944746855
+    second: NEW_gnome_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ENEMY_gnome_0
+      name: NEW_gnome_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7b7a1866bb50174f9bf9815857df17d
-      internalID: 4023731345118396899
+      spriteID: 76a5143850110334e9a077f0f9353f55
+      internalID: -1969924969352021640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ENEMY_gnome_1
+      name: NEW_gnome_1
       rect:
         serializedVersion: 2
         x: 14
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd3cf4a007de83540b7dc6de761fe800
-      internalID: 3947458540098733257
+      spriteID: 1f9805e6e9819c74b81db4deec58a8a3
+      internalID: -4873825123305903630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ENEMY_gnome_2
+      name: NEW_gnome_2
       rect:
         serializedVersion: 2
         x: 28
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad4ecd499091ed42a96b124774df534
-      internalID: 8429354660248937600
+      spriteID: b63368383b586b44192864dca3e4be76
+      internalID: -8337806085180095814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ENEMY_gnome_3
+      name: NEW_gnome_3
       rect:
         serializedVersion: 2
         x: 42
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 661604f6dd9ca2445925a88c1340c9e7
-      internalID: -6278577630376203020
+      spriteID: 024dc01822f0b8f40919e104529276f7
+      internalID: 2461489345944746855
       vertices: []
       indices: 
       edges: []
