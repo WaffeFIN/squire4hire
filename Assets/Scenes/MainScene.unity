@@ -891,6 +891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCamera: {fileID: 1077372955}
   player: {fileID: 1938423868}
+  hero: {fileID: 1625156172}
   overlay: {fileID: 130127930}
   darkBackdrop: {fileID: 431525190}
   pauseMenu: {fileID: 826878949}
