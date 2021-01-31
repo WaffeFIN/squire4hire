@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ItemSpawner : MonoBehaviour
 {
-    // Get proper layering this way
     public GameObject itemUI;
 
     private Dictionary<string, GameObject> PrefabDic;
@@ -19,7 +18,7 @@ public class ItemSpawner : MonoBehaviour
 			itemObj = Instantiate(obj, entityTransform.position, Quaternion.identity);
             var itemSprite = itemObj.GetComponent<Item>().SpriteRef;
 			var image = GenerateImageForItem(itemId, itemSprite);
-            itemObj.GetComponent<ImageManager>().image = image;
+            itemObj.GetComponent<ImageLink>().image = image;
        		image.transform.position = entityTransform.position;
 		} else {
 			throw new NotImplementedException($"Error trying to instantiate {itemId}");
@@ -43,31 +42,31 @@ public class ItemSpawner : MonoBehaviour
     }
     
     private static Dictionary<string, GameObject> MapItemLegendToPrefabs(List<string> itemLegend) {
-        var resource_dic = new Dictionary<string, GameObject>();
+        var resourceDic = new Dictionary<string, GameObject>();
 
         var errors = new List<string>();
         foreach (var id in itemLegend) {
-            if (!resource_dic.ContainsKey(id)) {
+            if (!resourceDic.ContainsKey(id)) {
                 string path = System.IO.Path.Combine("Prefabs", id);
                 GameObject prefab = Resources.Load<GameObject>(path);
                 if (prefab == null) {
                     errors.Add($"Couldn't load {path}");
                 }
-                resource_dic[id] = prefab;
+                resourceDic[id] = prefab;
             }
         }
         if (errors.Count > 0) {
             throw new NotImplementedException($"Error trying to map items:\n\t{System.String.Join("\n\t", errors.ToArray())}");
         }
-		return resource_dic;
+		return resourceDic;
 	}
 
     private static readonly List<string> ITEM_LEGEND = new List<string>() {
-        "arrow-1",
-        "mace",
-        "potion",
-        "shortbow",
-        "shield",
-        "breastplate"
+        "pickupArrow",
+        "pickupMace",
+        "pickupHealthPotion",
+        "pickupBow",
+        "pickupShield",
+        "pickupArmor"
     };
 }

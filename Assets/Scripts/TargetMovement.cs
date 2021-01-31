@@ -8,9 +8,8 @@ public class TargetMovement : MonoBehaviour
 	public float maxSpeed;
 	public Vector3 target;
 
-	private static float DISPLACEMENT_EPSILON = 32.0f;
+	private static float DISPLACEMENT_EPSILON = 20.0f;
 
-    // Update is called once per frame
     void Update()
     {
 		var rigidBody = GetComponent<Rigidbody2D>();

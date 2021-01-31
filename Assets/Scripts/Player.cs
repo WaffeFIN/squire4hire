@@ -5,19 +5,17 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
-    // Update is called once per frame
+    void Update()
+    {
+		ScoreSystem.distanceMoved += GetComponent<Rigidbody2D>().velocity.magnitude * Time.deltaTime;
+    }
+	
     void OnTriggerEnter2D(Collider2D col)
     {
 		var itemComponent = col.gameObject.GetComponent<Item>();
         if (itemComponent != null && itemComponent.pickupTimer < 0)
         {
-			GetComponent<Inventory>().AddItem(col.gameObject, itemComponent.ItemWeight);
+			GetComponent<Inventory>().AddItem(col.gameObject, itemComponent.weight);
         }
-    }
-
-    void Update()
-    {
-		ScoreSystem.distanceMoved += GetComponent<Rigidbody2D>().velocity.magnitude;
     }
 }

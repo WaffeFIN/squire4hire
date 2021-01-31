@@ -16,16 +16,10 @@ public class PlayerMovementTarget : MonoBehaviour
 
 
 	private bool encumbered = false;
-    public bool moving = false;
-    public bool previousMoving = true;
+    public bool isMoving = false;
+    public bool wasMoving = true;
 
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-		dodging -= Time.deltaTime;
+	(float, float) GetMovement() {
 		var dx = 0.0f;
 		var dy = 0.0f;
 		if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
@@ -44,31 +38,35 @@ public class PlayerMovementTarget : MonoBehaviour
         {
 			dx -= maxSpeed;
 		}
+		return (dx, dy);
+	}
+
+
+    // Update is called once per frame
+    void Update()
+    {
+		dodging -= Time.deltaTime;
+		var (dx, dy) = GetMovement();
+        wasMoving = isMoving;
+        isMoving = dx != 0.0f || dy != 0.0f;
+
+        if (!wasMoving && isMoving)
+        {
+            FindObjectOfType<AudioManager>().Play("footsteps");
+        }
+        if (wasMoving && !isMoving)
+        {
+            FindObjectOfType<AudioManager>().Stop("footsteps");
+        }
+
+        var animator = imageObject.GetComponent<Animator>();
+        animator.SetBool("moving", isMoving);
 
         if (dx != 0)
         {
             imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
-
-
-
-        previousMoving = moving;
-        moving = dx != 0.0f || dy != 0.0f;
-
-        if (!previousMoving && moving)
-        {
-            FindObjectOfType<AudioManager>().Play("footsteps");
-        }
-        if (previousMoving && !moving)
-        {
-            FindObjectOfType<AudioManager>().Stop("footsteps");
-        }
-
-
-        var animator = imageObject.GetComponent<Animator>();
-        animator.SetBool("moving", moving);
-
-        if ((dx != 0.0f || dy != 0.0f) && Input.GetKeyDown("space") && dodging < -diveRecoverTime) {
+        if (isMoving && Input.GetKeyDown("space") && dodging < -diveRecoverTime) {
 			dodging = dodgeTime;
 			if (Random.Range(0.0f, 1.0f) < ChanceOfItemLoss())
 			{
@@ -79,6 +77,7 @@ public class PlayerMovementTarget : MonoBehaviour
 		encumbered = GetComponent<Inventory>().IsFull();
 		var targetMovement = GetComponent<TargetMovement>();
 		if (dodging > 0) {
+			//ScoreSystem.hitsDodged++; TODO
 			targetMovement.maxSpeed = maxSpeed * dodgeSpeedMultiplier;
 			targetMovement.acceleration = acceleration * dodgeSpeedMultiplier;
 		} else {

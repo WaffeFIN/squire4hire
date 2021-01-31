@@ -4,45 +4,23 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Sprite SpriteRef; //delete?
-    public int ItemWeight = 1;
+    public Sprite SpriteRef;
+
+    public int weight = 1;
 
     public string itemName;
 
 	public float pickupTimer = 0.5f;
-
-	private float decay = 30.0f;
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
 		if (pickupTimer >= 0) pickupTimer -= Time.deltaTime;
-
-        var itemBody = GetComponent<Rigidbody2D>();
-		var friction = 15.0f;
-        if (itemBody.velocity.magnitude > 0) {
-            itemBody.velocity -= friction * itemBody.velocity.normalized;
-            if (itemBody.velocity.magnitude < friction) {
-                itemBody.velocity = new Vector2();
-            }
-        }
-
-		decay -= Time.deltaTime;
-		if (decay < 0.0f) {
-			ScoreSystem.itemsLost++;
-			Destroy(GetComponent<ImageManager>().image.gameObject);
-			Destroy(gameObject);
-		}
     }
 
-    public string GetName() {
-        return itemName;
-    }
+	void OnDestroy()
+	{
+		ScoreSystem.itemsLost++;
+	}
 }

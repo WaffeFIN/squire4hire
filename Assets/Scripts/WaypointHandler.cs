@@ -6,7 +6,6 @@ public class WaypointHandler : MonoBehaviour
 {
     public IList<Vector2> waypoints;
 
-    // Start is called before the first frame update
     void Awake()
     {
         waypoints = new List<Vector2>();

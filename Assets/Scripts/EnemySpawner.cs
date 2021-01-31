@@ -6,17 +6,13 @@ using UnityEngine.UI;
 public class EnemySpawner : MonoBehaviour
 {
     public Canvas canvas;
-    // Get proper layering this way
     public GameObject enemyUI;
 
-    //temporary spawnTimer
     private float nextSpawn = 1;
+    private Dictionary<string, GameObject> prefabDic;
 
-    //public bool gnoming = true;
-
-    private Dictionary<string, GameObject> PrefabDic;
     void Awake() {
-    	PrefabDic = MapEnemyLegendToPrefabs(ENEMY_LEGEND);
+    	prefabDic = MapEnemyLegendToPrefabs(ENEMY_LEGEND);
     }
 
     void Update()
@@ -25,17 +21,18 @@ public class EnemySpawner : MonoBehaviour
             var canvasRect = canvas.GetComponent<RectTransform>().rect;
             var randomX = UnityEngine.Random.Range(0.1f, canvasRect.width) - canvasRect.width/2;
             var randomY = UnityEngine.Random.Range(0.1f, canvasRect.height) - canvasRect.height/2;
-            SpawnEnemy("enemy-1", new Vector2(randomX, randomY));
+            SpawnEnemy("enemyGnome", new Vector2(randomX, randomY));
             nextSpawn += 2;
         }
     }
 
     public GameObject SpawnEnemy(string enemyId, Vector2 spawnPosition) {
-        if (PrefabDic.TryGetValue(enemyId, out GameObject obj)) {
-			var itemObj = Instantiate(obj, spawnPosition, Quaternion.identity);
-            var itemSprite = itemObj.GetComponent<Enemy>().SpriteRef;
-            var animator = itemObj.GetComponent<Animator>();
-            itemObj.GetComponent<ImageManager>().image = GenerateImageForEnemy(enemyId, itemSprite, animator);
+        if (prefabDic.TryGetValue(enemyId, out GameObject obj)) {
+			var enemyObj = Instantiate(obj, spawnPosition, Quaternion.identity);
+            var enemySprite = enemyObj.GetComponent<Enemy>().SpriteRef;
+            var animator = enemyObj.GetComponent<Animator>();
+            enemyObj.GetComponent<ImageLink>().image = GenerateImageForEnemy(enemyId, enemySprite, animator);
+			enemyObj.GetComponent<TargetMovement>().target = enemyObj.transform.position;
 		} else {
 			throw new NotImplementedException($"Error trying to instantiate {enemyId}");
 		}
@@ -53,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
 
         Image image = imgObject.AddComponent<Image>();
         image.sprite = spriteRef;
-       //image.color = new Color(1f, 0.1f, 0.1f);
+		
         imgObject.transform.SetParent(enemyUI.transform);
         Animator anim = imgObject.AddComponent<Animator>();
         anim.runtimeAnimatorController = animator.runtimeAnimatorController;
@@ -64,26 +61,26 @@ public class EnemySpawner : MonoBehaviour
     }
     
     private static Dictionary<string, GameObject> MapEnemyLegendToPrefabs(List<string> enemyLegend) {
-        var resource_dic = new Dictionary<string, GameObject>();
+        var resourceDic = new Dictionary<string, GameObject>();
 
         var errors = new List<string>();
         foreach (var id in enemyLegend) {
-            if (!resource_dic.ContainsKey(id)) {
+            if (!resourceDic.ContainsKey(id)) {
                 string path = System.IO.Path.Combine("Prefabs", id);
                 GameObject prefab = Resources.Load<GameObject>(path);
                 if (prefab == null) {
                     errors.Add($"Couldn't load {path}");
                 }
-                resource_dic[id] = prefab;
+                resourceDic[id] = prefab;
             }
         }
         if (errors.Count > 0) {
             throw new NotImplementedException($"Error trying to map items:\n\t{System.String.Join("\n\t", errors.ToArray())}");
         }
-		return resource_dic;
+		return resourceDic;
 	}
 
     private static readonly List<string> ENEMY_LEGEND = new List<string>() {
-		"enemy-1"
+		"enemyGnome"
 	};
 }

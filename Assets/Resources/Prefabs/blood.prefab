@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6296699019714804843}
-  - component: {fileID: 3417450552365797594}
   - component: {fileID: 6506190967689018724}
+  - component: {fileID: -7798205412153974115}
+  - component: {fileID: 7240614959304286862}
   m_Layer: 5
   m_Name: blood
   m_TagString: Untagged
@@ -32,20 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3417450552365797594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530505648962633400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efc8b543841bcde73a3a00be0ab968fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decay: 0
-  velocity: {x: 0, y: 0}
 --- !u!114 &6506190967689018724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +42,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 530505648962633400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e17af1dfdfd3493c8b03d90e69bffad, type: 3}
+  m_Script: {fileID: 11500000, guid: e7a2500554e2090bfb9ef8bd15077e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  friction: 10
+--- !u!114 &-7798205412153974115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530505648962633400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f1cec6e36fcd72aa244a42bd22a175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decayTime: 1
+--- !u!114 &7240614959304286862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530505648962633400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efd507b7541ba58fa6a62ce554380dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 0}

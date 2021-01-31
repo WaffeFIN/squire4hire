@@ -7,12 +7,6 @@ public class Inventory : MonoBehaviour
 	public int maxWeight;
     public List<GameObject> itemsCarried = new List<GameObject>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
 	public void AddItem(GameObject obj) {
         AddItem(obj, int.MinValue);
 	}
@@ -24,10 +18,10 @@ public class Inventory : MonoBehaviour
 			}
 			itemsCarried.Add(obj);
 			obj.SetActive(false);
-			var imageManager = obj.GetComponent<ImageManager>();
+			var imageManager = obj.GetComponent<ImageLink>();
 			if (imageManager != null)
 			{
-				imageManager.image.enabled =false;
+				imageManager.image.enabled = false;
 			}
 		}
 	}
@@ -37,7 +31,7 @@ public class Inventory : MonoBehaviour
 		foreach (var item in itemsCarried) {
 			var itemComponent = item.GetComponent<Item>();
 			if (itemComponent != null) {
-				weight += itemComponent.ItemWeight;
+				weight += itemComponent.weight;
 			}
 		}
 		return weight;
@@ -59,13 +53,18 @@ public class Inventory : MonoBehaviour
 		}
 
 		lostItem.SetActive(true);
-		var imageManager = lostItem.GetComponent<ImageManager>();
+		var imageManager = lostItem.GetComponent<ImageLink>();
 		if (imageManager != null)
 		{
 			imageManager.image.enabled = true;
 		}
 		lostItem.transform.position = gameObject.transform.position;
-		lostItem.GetComponent<Rigidbody2D>().velocity = Random.Range(320.0f, 520.0f) * Random.insideUnitCircle.normalized;
+		var velocity = Random.Range(220.0f, 320.0f) * Random.insideUnitCircle.normalized;
+		var rigidbody2D = GetComponent<Rigidbody2D>();
+		if (rigidbody2D != null) {
+			velocity += rigidbody2D.velocity;
+		}
+		lostItem.GetComponent<Rigidbody2D>().velocity = velocity;
 	}
 
 	public bool IsFull() {
@@ -80,13 +79,13 @@ public class Inventory : MonoBehaviour
 		foreach (var item in itemsCarried) {
 			var itemComponent = item.GetComponent<Item>();
 			if (itemComponent != null) {
-				if (itemComponent.ItemWeight == 1) {
+				if (itemComponent.weight == 1) {
 					ScoreSystem.otherItemsRetrieved++;
 				}
-				if (itemComponent.ItemWeight == 2) {
+				if (itemComponent.weight == 2) {
 					ScoreSystem.weaponsRetrieved++;
 				}
-				if (itemComponent.ItemWeight == 3) {
+				if (itemComponent.weight == 3) {
 					ScoreSystem.armorPartsRetrieved++;
 				}
 			}
@@ -95,9 +94,4 @@ public class Inventory : MonoBehaviour
 		itemsCarried.Clear();
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

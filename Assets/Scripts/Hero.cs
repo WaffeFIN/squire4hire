@@ -21,15 +21,10 @@ public class Hero : MonoBehaviour
     public float armorPolish;
     public float polishingSpeedCoefficient = 5.0f;
     public float complaintInterval = 15.2f;
-	public float swingInterval = 1.0f;
-    public bool swinging = false; 
 
-    //temporary spawnTimer
 	private HeroState state = HeroState.Bashing;
     private float nextItemSpawn = 4.0f;
     private float complaintTimer = 1.0f;
-	private float swingTimer = 1.0f;
-	private float? swingTowards = null;
 
     // Start is called before the first frame update
     void Start()
@@ -38,16 +33,16 @@ public class Hero : MonoBehaviour
 		var inventory = GetComponent<Inventory>();
 		for (int i = 0; i < 6; i++)
         {
-			inventory.AddItem(spawner.SpawnItem("arrow-1", transform));
+			inventory.AddItem(spawner.SpawnItem("pickupArrow", transform));
 		}
-		inventory.AddItem(spawner.SpawnItem("mace", transform));
-		inventory.AddItem(spawner.SpawnItem("mace", transform));
-		inventory.AddItem(spawner.SpawnItem("potion", transform));
-		inventory.AddItem(spawner.SpawnItem("potion", transform));
-		inventory.AddItem(spawner.SpawnItem("potion", transform));
-		inventory.AddItem(spawner.SpawnItem("shortbow", transform));
-		inventory.AddItem(spawner.SpawnItem("shield", transform));
-		inventory.AddItem(spawner.SpawnItem("breastplate", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupMace", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupMace", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupHealthPotion", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupHealthPotion", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupHealthPotion", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupBow", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupShield", transform));
+		inventory.AddItem(spawner.SpawnItem("pickupArmor", transform));
 
 		complaintObject = imageObject.GetComponentInChildren<Text>().gameObject;
 		complaintObject.SetActive(false);
@@ -58,9 +53,6 @@ public class Hero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        swingTimer -= Time.deltaTime;
-
 		if (armorPolish <= 0) {
 			complaintObject.SetActive(true);
 			state = HeroState.ComplainingAboutDirt;
@@ -78,9 +70,7 @@ public class Hero : MonoBehaviour
 			complaintTimer -= Time.deltaTime;
 			if (complaintTimer < 0) {
 				complaintTimer += complaintInterval;
-
-				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 2.0f));
-                FindObjectOfType<AudioManager>().Play("va_polish_armor_command_" + randomIndex);
+                FindObjectOfType<AudioManager>().PlayRandom("va_polish_armor_command_");
             }
 			
 			if (armorPolish > maxArmorPolish) {
@@ -92,24 +82,6 @@ public class Hero : MonoBehaviour
 			}
 		}
 
-		if (swingTowards != null && swingTimer < swingInterval * 0.875)
-		{
-			var rotation = (float) swingTowards;
-			var painZone = Instantiate(painZonePrefab, transform.position, Quaternion.identity);
-			painZone.transform.Rotate(0, 0, rotation);
-
-			var painZoneComponent = painZone.GetComponent<PainZone>();
-			painZoneComponent.creator = gameObject;
-			var knockbackStrength = 250;
-			painZoneComponent.knockback = (Vector2)(Quaternion.Euler(0, 0, rotation) * Vector2.right) * knockbackStrength;
-			swingTowards = null;
-
-            var animator = imageObject.GetComponent<Animator>();
-            swinging = false;
-            animator.SetBool("swinging", false);
-		}
-
-
         var dx = -GetComponent<Rigidbody2D>().velocity.x;
 
         if (Mathf.Abs(dx) > 20.0) {
@@ -119,8 +91,6 @@ public class Hero : MonoBehaviour
 			);
             imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
-        
-
     }
 
 	float GetRotation(Vector2 v2a, Vector2 v2b) {
@@ -145,17 +115,6 @@ public class Hero : MonoBehaviour
 						playerInventory.Pointsify(heroInventory.itemsCarried);
 					}
 					break;
-			}
-		} else {
-			if (swingTimer < 0) {
-                var animator = imageObject.GetComponent<Animator>();
-                swinging = true;
-                animator.SetBool("swinging", true);
-
-				var randomIndex = (int) Mathf.Ceil(Random.Range(0.0f, 5.0f));
-                FindObjectOfType<AudioManager>().Play("sword_swoosh_" + randomIndex);
-                swingTimer = swingInterval;
-				swingTowards = GetRotation(other.transform.position, transform.position);
 			}
 		}
 	}
