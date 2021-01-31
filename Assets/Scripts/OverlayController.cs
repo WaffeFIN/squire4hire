@@ -51,7 +51,7 @@ public class OverlayController : MonoBehaviour
         var playerInventory = player.GetComponent<Inventory>();
         if (previousCount != playerInventory.itemsCarried.Count) {
 			previousCount = playerInventory.itemsCarried.Count;
-            var content = "";
+            var content = playerInventory.Weight() + "/" + playerInventory.maxWeight + "\n";
             for (int i = 0; i < playerInventory.itemsCarried.Count; i++)
             {
                 var itemName = playerInventory.itemsCarried[i].GetComponent<Item>().GetName();
