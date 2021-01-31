@@ -33,23 +33,20 @@ public class Hero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<string> inventoryContent = new List<string>()
-            {
-                "arrow-1",
-                "mace",
-                "potion",
-                "shortbow"
-            };
-        
         transform.position = new Vector3();
 		var inventory = GetComponent<Inventory>();
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < 6; i++)
         {
-            var inventoryAccessor = (int)Mathf.Ceil(Random.Range(0.0f, 3.0f));
-
-            var randomItem = spawner.SpawnItem(inventoryContent[inventoryAccessor], transform);
-			inventory.AddItem(randomItem);
+			inventory.AddItem(spawner.SpawnItem("arrow-1", transform));
 		}
+		inventory.AddItem(spawner.SpawnItem("mace", transform));
+		inventory.AddItem(spawner.SpawnItem("mace", transform));
+		inventory.AddItem(spawner.SpawnItem("potion", transform));
+		inventory.AddItem(spawner.SpawnItem("potion", transform));
+		inventory.AddItem(spawner.SpawnItem("potion", transform));
+		inventory.AddItem(spawner.SpawnItem("shortbow", transform));
+		inventory.AddItem(spawner.SpawnItem("shield", transform));
+		inventory.AddItem(spawner.SpawnItem("breastplate", transform));
 
 		complaintObject = imageObject.GetComponentInChildren<Text>().gameObject;
 		complaintObject.SetActive(false);
