@@ -18,7 +18,9 @@ public class ItemSpawner : MonoBehaviour
         if (PrefabDic.TryGetValue(itemId, out GameObject obj)) {
 			itemObj = Instantiate(obj, entityTransform.position, Quaternion.identity);
             var itemSprite = itemObj.GetComponent<Item>().SpriteRef;
-            itemObj.GetComponent<ImageManager>().image = GenerateImageForItem(itemId, itemSprite);
+			var image = GenerateImageForItem(itemId, itemSprite);
+            itemObj.GetComponent<ImageManager>().image = image;
+       		image.transform.position = entityTransform.position;
 		} else {
 			throw new NotImplementedException($"Error trying to instantiate {itemId}");
 		}
@@ -64,6 +66,8 @@ public class ItemSpawner : MonoBehaviour
         "arrow-1",
         "mace",
         "potion",
-        "shortbow"
+        "shortbow",
+        "shield",
+        "breastplate"
     };
 }

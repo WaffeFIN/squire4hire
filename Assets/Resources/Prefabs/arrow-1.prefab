@@ -16,7 +16,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpriteRef
       value: 
-      objectReference: {fileID: 21300000, guid: fce307ce93d9a084c9b268d33c95e248,
+      objectReference: {fileID: -7921330582040650716, guid: c2bd9b51656fcf1a69acda889b101405,
         type: 3}
     - target: {fileID: 1928437648846717982, guid: cee85511c1f15e248a53be2402510b8b,
         type: 3}

@@ -26,9 +26,10 @@ public class Item : MonoBehaviour
 		if (pickupTimer >= 0) pickupTimer -= Time.deltaTime;
 
         var itemBody = GetComponent<Rigidbody2D>();
+		var friction = 15.0f;
         if (itemBody.velocity.magnitude > 0) {
-            itemBody.velocity -= 15f * itemBody.velocity.normalized;
-            if (itemBody.velocity.magnitude < 15f) {
+            itemBody.velocity -= friction * itemBody.velocity.normalized;
+            if (itemBody.velocity.magnitude < friction) {
                 itemBody.velocity = new Vector2();
             }
         }

@@ -8,6 +8,7 @@ public class Hero : MonoBehaviour
     public ItemSpawner spawner;
 
     public GameObject imageObject;
+	private GameObject complaintObject;
 
     public enum HeroState {
 		Bashing,
@@ -33,23 +34,23 @@ public class Hero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<string> inventoryContent = new List<string>()
-            {
-                "arrow-1",
-                "mace",
-                "potion",
-                "shortbow"
-            };
-        
         transform.position = new Vector3();
 		var inventory = GetComponent<Inventory>();
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < 6; i++)
         {
-            var inventoryAccessor = (int)Mathf.Ceil(Random.Range(0.0f, 3.0f));
-
-            var randomItem = spawner.SpawnItem(inventoryContent[inventoryAccessor], transform);
-			inventory.AddItem(randomItem);
+			inventory.AddItem(spawner.SpawnItem("arrow-1", transform));
 		}
+		inventory.AddItem(spawner.SpawnItem("mace", transform));
+		inventory.AddItem(spawner.SpawnItem("mace", transform));
+		inventory.AddItem(spawner.SpawnItem("potion", transform));
+		inventory.AddItem(spawner.SpawnItem("potion", transform));
+		inventory.AddItem(spawner.SpawnItem("potion", transform));
+		inventory.AddItem(spawner.SpawnItem("shortbow", transform));
+		inventory.AddItem(spawner.SpawnItem("shield", transform));
+		inventory.AddItem(spawner.SpawnItem("breastplate", transform));
+
+		complaintObject = imageObject.GetComponentInChildren<Text>().gameObject;
+		complaintObject.SetActive(false);
 
         FindObjectOfType<AudioManager>().Play("music");
     }
@@ -61,6 +62,7 @@ public class Hero : MonoBehaviour
         swingTimer -= Time.deltaTime;
 
 		if (armorPolish <= 0) {
+			complaintObject.SetActive(true);
 			state = HeroState.ComplainingAboutDirt;
 		} else {
 			armorPolish -= Time.deltaTime * 5;
@@ -83,6 +85,8 @@ public class Hero : MonoBehaviour
 			
 			if (armorPolish > maxArmorPolish) {
 				armorPolish = maxArmorPolish;
+				complaintObject.SetActive(false);
+                FindObjectOfType<AudioManager>().Play("va_squire_moan");
 				state = HeroState.Bashing;
 			}
 		}
