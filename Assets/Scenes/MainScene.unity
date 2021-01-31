@@ -2340,7 +2340,7 @@ MonoBehaviour:
     loop: 0
   - name: footsteps
     clip: {fileID: 8300000, guid: 5598672a7e8260e488535b2d21ee80da, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 1
   - name: armor_polish
@@ -2355,8 +2355,8 @@ MonoBehaviour:
     loop: 0
   - name: dash
     clip: {fileID: 8300000, guid: d087282ea62e3f34d979d6fc7b302f1e, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.8
+    pitch: 1
     loop: 0
   - name: glass_clink
     clip: {fileID: 8300000, guid: 804676620266cd648a602c314339eeb0, type: 3}
@@ -2415,12 +2415,12 @@ MonoBehaviour:
     loop: 0
   - name: va_hero_grunt_1
     clip: {fileID: 8300000, guid: 05cb478620fddca4982b27a6e7b6fb15, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
   - name: va_hero_grunt_2
     clip: {fileID: 8300000, guid: d01208d7a6458cb4496f16f375c5b166, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
   - name: va_polish_armor_command_1
@@ -2445,17 +2445,17 @@ MonoBehaviour:
     loop: 0
   - name: va_squire_moan
     clip: {fileID: 8300000, guid: 2ba61ab86104fe14bbbad127e3ed3476, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
   - name: va_squire_yelp_1
     clip: {fileID: 8300000, guid: e6da11c996949614497abf29d14eef3d, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
   - name: va_squire_yelp_2
     clip: {fileID: 8300000, guid: fe34b4c6483c68b44b858c4c9b496b7c, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
 --- !u!4 &1970282666
