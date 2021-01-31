@@ -27,7 +27,7 @@ public class Hero : MonoBehaviour
     //temporary spawnTimer
 	private HeroState state = HeroState.Bashing;
     private float nextItemSpawn = 4.0f;
-    private float complaintTimer = 0.0f;
+    private float complaintTimer = 1.0f;
 	private float swingTimer = 1.0f;
 	private float? swingTowards = null;
 
@@ -87,6 +87,7 @@ public class Hero : MonoBehaviour
 				armorPolish = maxArmorPolish;
 				complaintObject.SetActive(false);
                 FindObjectOfType<AudioManager>().Play("va_squire_moan");
+				complaintTimer = 1f;
 				state = HeroState.Bashing;
 			}
 		}
@@ -111,8 +112,11 @@ public class Hero : MonoBehaviour
 
         var dx = -GetComponent<Rigidbody2D>().velocity.x;
 
-        if (Mathf.Abs(dx) > 20.0 ){
-
+        if (Mathf.Abs(dx) > 20.0) {
+            complaintObject.transform.localScale = new Vector2(
+				-Mathf.Sign(dx) * Mathf.Abs(complaintObject.transform.localScale.x),
+				complaintObject.transform.localScale.y
+			);
             imageObject.transform.localScale = new Vector2(-Mathf.Sign(dx), 1.0f);
         }
         

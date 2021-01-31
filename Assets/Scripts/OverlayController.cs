@@ -15,12 +15,22 @@ public class OverlayController : MonoBehaviour
     public GameObject menuBox;
     public GameObject pauseText;
     public GameObject gameOverText;
+    public GameObject scoreWrapper;
+    public Text scoreNumber;
     public GameObject inventoryContent;
+    public GameObject titleText;
+    public GameObject introText;
+    public GameObject restartText;
+    public GameObject quiteText;
     public Text healthText;
 
-    private bool isGameOngoing = true;
+    private bool isGameOngoing = false;
 	private int previousCount = -1;
     private bool isGameOver = false;
+
+	void Start() {
+        Time.timeScale = isGameOngoing ? 1 : 0;
+	}
 
     void Update()
     {
@@ -48,6 +58,12 @@ public class OverlayController : MonoBehaviour
             Time.timeScale = isGameOngoing ? 1 : 0;
             pauseText.SetActive(!isGameOngoing);
             menuBox.SetActive(!isGameOngoing);
+            titleText.SetActive(false);
+            introText.SetActive(false);
+            scoreWrapper.SetActive(true);
+            restartText.SetActive(true);
+            quiteText.SetActive(true);
+            scoreNumber.text = "" + ScoreSystem.Score();
         }
 
         if (player.GetComponent<Health>().IsDead() || hero.GetComponent<Health>().IsDead()) {
@@ -56,6 +72,7 @@ public class OverlayController : MonoBehaviour
             Time.timeScale = 0;
             gameOverText.SetActive(true);
             menuBox.SetActive(true);
+            scoreNumber.text = "" + ScoreSystem.Score();
         }
 
         var playerInventory = player.GetComponent<Inventory>();
