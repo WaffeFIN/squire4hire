@@ -15,6 +15,7 @@ public class OverlayController : MonoBehaviour
     public GameObject menuBox;
     public GameObject pauseText;
     public GameObject gameOverText;
+    public GameObject scoreWrapper;
     public Text scoreNumber;
     public GameObject inventoryContent;
     public GameObject titleText;
@@ -59,6 +60,7 @@ public class OverlayController : MonoBehaviour
             menuBox.SetActive(!isGameOngoing);
             titleText.SetActive(false);
             introText.SetActive(false);
+            scoreWrapper.SetActive(true);
             restartText.SetActive(true);
             quiteText.SetActive(true);
             scoreNumber.text = "" + ScoreSystem.Score();
