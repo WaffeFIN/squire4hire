@@ -15,7 +15,11 @@ public class HitSystem : MonoBehaviour
     public void Hit(GameObject source, GameObject target, int itemsLost)
 	{
 		var health = target.GetComponent<Health>();
-		if (health != null && health.HasMercy()) return;
+		if (health != null && health.HasMercy()) {
+			if (target.tag == "Player")
+				ScoreSystem.hitsDodged++;
+			return;
+		}
 
 		if (target.tag == "Player") { // TODO refactor
 			FindObjectOfType<AudioManager>().PlayRandom("va_squire_yelp_");
