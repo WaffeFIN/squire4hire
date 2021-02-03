@@ -7,11 +7,16 @@ public class HitSystem : MonoBehaviour
 {
 	public GameObject bloodUI;
 
-    public void Hit(GameObject source, GameObject target) {
+    public void Hit(GameObject source, GameObject target)
+	{
 		Hit(source, target, 3);
 	}
 
-    public void Hit(GameObject source, GameObject target, int itemsLost) {
+    public void Hit(GameObject source, GameObject target, int itemsLost)
+	{
+		var health = target.GetComponent<Health>();
+		if (health != null && health.HasMercy()) return;
+
 		if (target.tag == "Player") { // TODO refactor
 			FindObjectOfType<AudioManager>().PlayRandom("va_squire_yelp_");
 		}
@@ -24,11 +29,13 @@ public class HitSystem : MonoBehaviour
 				itemsLost--;
 				inventory.LoseRandomItem(1.5f);
 			}
+			if (health != null) {
+				health.GiveInvulnerability(health.mercyInterval);
+			}
 			return;
 		}
-		var health = target.GetComponent<Health>();
 		if (health != null) {
-        	health.currentHealth--;
+			health.TakeDamage(1);
 
 			if (health.bloodPrefab != null) {
 				for (int i = 0; i < 4; i++) {
@@ -39,7 +46,8 @@ public class HitSystem : MonoBehaviour
 		}
     }
 
-	private void CreateBlood(Vector3 position, GameObject bloodPrefab, int size) {
+	private void CreateBlood(Vector3 position, GameObject bloodPrefab, int size)
+	{
 		var bloodObj = Instantiate(bloodPrefab, position, Quaternion.identity);
 		var bloodImageObj = new GameObject("BloodImage");
 		bloodImageObj.transform.position = position;

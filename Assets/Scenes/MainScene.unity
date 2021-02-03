@@ -2530,9 +2530,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
   maxHealth: 10
   bloodPrefab: {fileID: 0}
+  mercyInterval: 1.2
 --- !u!114 &1625156181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2809,7 +2809,7 @@ MonoBehaviour:
   imageObject: {fileID: 1431882678}
   dodging: -100
   dodgeSpeedMultiplier: 2.7
-  dodgeTime: 0.4
+  dodgeTime: 0.3
   dodgeRecoverTime: 0.2
   diveRecoverTime: 0.8
   maxSpeed: 160
@@ -2902,10 +2902,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48df27e469ed3148a24057ae3ddbf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
   maxHealth: 3
   bloodPrefab: {fileID: 530505648962633400, guid: 298b50217a16e5baa898ba029ca75708,
     type: 3}
+  mercyInterval: 1.2
 --- !u!114 &1938423878
 MonoBehaviour:
   m_ObjectHideFlags: 0

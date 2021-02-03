@@ -5,12 +5,48 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int currentHealth;
     public int maxHealth;
 	public GameObject bloodPrefab;
+    public float mercyInterval;
+
+    public int currentHealth { get; private set; }
+    private float mercyTimer;
+	private Image associatedImage;
+
+	void Start() {
+		currentHealth = maxHealth;
+
+		var imageLink = GetComponent<ImageLink>(); // we're assuming all with Health has an ImageLink
+		associatedImage = imageLink.image;
+	}
+
+	private static float blinkInterval = 0.2f;
+
+	public bool HasMercy()
+	{
+		return mercyTimer > 0;
+	}
+
+	public void GiveInvulnerability(float seconds)
+	{
+		mercyTimer = Mathf.Max(seconds, mercyTimer);
+	}
+
+	public void TakeDamage(int amount)
+	{
+		currentHealth -= amount;
+		mercyTimer = mercyInterval;
+	}
 
 	void Update()
 	{
+		mercyTimer -= Time.deltaTime;
+
+		//Mercy invulnerability blinking
+        var imageColor = associatedImage.color;
+        imageColor.a = mercyTimer < 0 ? 1.0f : 1.0f - (Mathf.Ceil(mercyTimer / blinkInterval) % 2) * 0.5f;
+		associatedImage.color = imageColor;
+
 		if (IsDead()) {
 			if (gameObject.tag == "Player") {
             	FindObjectOfType<AudioManager>().Stop("footsteps");

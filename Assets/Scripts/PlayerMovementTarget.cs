@@ -68,6 +68,7 @@ public class PlayerMovementTarget : MonoBehaviour
         }
         if (isMoving && Input.GetKeyDown("space") && dodging < -diveRecoverTime) {
 			dodging = dodgeTime;
+			GetComponent<Health>().GiveInvulnerability(dodgeTime);
 			if (Random.Range(0.0f, 1.0f) < ChanceOfItemLoss())
 			{
 				GetComponent<Inventory>().LoseRandomItem();
