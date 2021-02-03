@@ -15,7 +15,7 @@ public class PlayerMovementTarget : MonoBehaviour
 	public float acceleration;
 
 
-	private bool encumbered = false;
+	private float encumberance = 0.0f;
     public bool isMoving = false;
     public bool wasMoving = true;
 
@@ -50,6 +50,8 @@ public class PlayerMovementTarget : MonoBehaviour
         wasMoving = isMoving;
         isMoving = dx != 0.0f || dy != 0.0f;
 
+		encumberance = GetComponent<Inventory>().GetEncumberance();
+
         if (!wasMoving && isMoving)
         {
             FindObjectOfType<AudioManager>().Play("footsteps");
@@ -75,16 +77,15 @@ public class PlayerMovementTarget : MonoBehaviour
 			}
             FindObjectOfType<AudioManager>().Play("dash");
 		}
-		encumbered = GetComponent<Inventory>().IsFull();
+		
 		var targetMovement = GetComponent<TargetMovement>();
 		if (dodging > 0) {
-			//ScoreSystem.hitsDodged++; TODO
 			targetMovement.maxSpeed = maxSpeed * dodgeSpeedMultiplier;
 			targetMovement.acceleration = acceleration * dodgeSpeedMultiplier;
 		} else {
 			targetMovement.maxSpeed = maxSpeed;
 			targetMovement.acceleration = acceleration;
-			if ((encumbered && dodging < -diveRecoverTime) || (!encumbered && dodging < -dodgeRecoverTime)) {
+			if (dodging < -dodgeRecoverTime * (1.0f - encumberance) - diveRecoverTime * encumberance) {
 				targetMovement.target = new Vector2(transform.position.x + dx, transform.position.y + dy);
 			}
 		}
@@ -92,12 +93,6 @@ public class PlayerMovementTarget : MonoBehaviour
 
 	private float ChanceOfItemLoss()
 	{
-		var inventory = GetComponent<Inventory>();
-		var weight = inventory.Weight();
-		var maxWeight = inventory.maxWeight;
-		if (weight == maxWeight - 1) return 0.1f;
-		if (weight == maxWeight) return 0.5f;
-		if (weight > maxWeight) return 1.0f;
-		return 0.0f;
+		return Mathf.Max(0.0f, Mathf.Min(1.0f, encumberance - 0.5f));
 	}
 }

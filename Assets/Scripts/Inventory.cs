@@ -71,6 +71,13 @@ public class Inventory : MonoBehaviour
 		return Weight() >= maxWeight;
 	}
 
+	public float GetEncumberance() {
+		var ratioFilled = ((float) Weight()) / maxWeight;
+		return ratioFilled * ratioFilled;
+		//25% full gives 6% encumberance
+		//50% full gives 25% encumberance
+	}
+
 	public void Pointsify(List<GameObject> targetList) {
 		FindObjectOfType<AudioManager>().Play("get_points");
 		if (itemsCarried.Count >= 3)
