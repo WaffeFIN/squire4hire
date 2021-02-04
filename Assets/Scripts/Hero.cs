@@ -57,7 +57,7 @@ public class Hero : MonoBehaviour
 			complaintObject.SetActive(true);
 			state = HeroState.ComplainingAboutDirt;
 		} else {
-			armorPolish -= Time.deltaTime * 5;
+			armorPolish -= Time.deltaTime;
 		}
 
 		if (Time.time > nextItemSpawn) {

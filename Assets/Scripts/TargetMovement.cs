@@ -6,7 +6,7 @@ public class TargetMovement : MonoBehaviour
 {
 	public float acceleration;
 	public float maxSpeed;
-	public Vector3 target;
+	public Vector2 target;
 
 	private static float DISPLACEMENT_EPSILON = 20.0f;
 
@@ -30,13 +30,9 @@ public class TargetMovement : MonoBehaviour
 		}
     }
 
-	public bool IsCloseToTargetX() {
+	public bool IsCloseToTarget() {
 		var dx = target.x - transform.position.x;
-		return Mathf.Abs(dx) < DISPLACEMENT_EPSILON;
-	}
-
-	public bool IsCloseToTargetY() {
 		var dy = target.y - transform.position.y;
-		return Mathf.Abs(dy) < DISPLACEMENT_EPSILON;
+		return Mathf.Abs(dx) < DISPLACEMENT_EPSILON && Mathf.Abs(dy) < DISPLACEMENT_EPSILON;
 	}
 }
